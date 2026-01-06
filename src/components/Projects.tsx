@@ -48,35 +48,30 @@ const MobileFrame = ({ image, title, isHovered }: { image: string; title: string
         <div className="absolute -left-1 top-36 w-1 h-12 bg-zinc-700 rounded-l-sm" />
         <div className="absolute -left-1 top-52 w-1 h-12 bg-zinc-700 rounded-l-sm" />
         <div className="absolute -right-1 top-32 w-1 h-16 bg-zinc-700 rounded-r-sm" />
-        
+
         {/* Inner bezel */}
         <div className="relative bg-black rounded-[2.5rem] overflow-hidden">
           {/* Dynamic Island */}
           <div className="absolute top-3 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-full z-20 flex items-center justify-center gap-3">
             <div className="w-3 h-3 rounded-full bg-zinc-900 ring-1 ring-zinc-800" />
           </div>
-          
-          {/* Screen */}
-          <div className="relative overflow-hidden h-[520px] sm:h-[580px]">
-            <div 
-              className={`absolute top-0 left-0 right-0 transition-transform duration-[5000ms] ease-in-out ${isHovered ? '-translate-y-[55%]' : 'translate-y-0'}`}
-            >
-              <img
-                src={image}
-                alt={title}
-                className="w-full h-auto"
-              />
-            </div>
-            
-            {/* Screen Reflection */}
+
+          {/* Screen (fit whole screenshot inside) */}
+          <div className="relative overflow-hidden h-[520px] sm:h-[580px] bg-background">
+            <img
+              src={image}
+              alt={title}
+              className={`absolute inset-0 w-full h-full object-contain transition-transform duration-500 ${isHovered ? 'scale-[1.02]' : 'scale-100'}`}
+            />
+            {/* subtle reflection */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none" />
           </div>
-          
+
           {/* Home Indicator */}
           <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/50 rounded-full z-20" />
         </div>
       </div>
-      
+
       {/* Glow Effect */}
       <div className={`absolute -inset-6 bg-primary/25 rounded-[4rem] blur-2xl transition-opacity duration-500 -z-10 ${isHovered ? 'opacity-100' : 'opacity-0'}`} />
     </div>
