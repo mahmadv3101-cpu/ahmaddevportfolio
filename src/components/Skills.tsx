@@ -1,44 +1,25 @@
 const skills = [
-  { name: 'HTML5', level: 95, category: 'Frontend' },
-  { name: 'CSS3', level: 90, category: 'Frontend' },
-  { name: 'JavaScript', level: 90, category: 'Frontend' },
-  { name: 'React.js', level: 85, category: 'Frontend' },
-  { name: 'Tailwind CSS', level: 90, category: 'Frontend' },
-  { name: 'Bootstrap', level: 85, category: 'Frontend' },
-  { name: 'Node.js', level: 80, category: 'Backend' },
-  { name: 'REST APIs', level: 85, category: 'Backend' },
-  { name: 'Git & GitHub', level: 88, category: 'Tools' },
-  { name: 'Responsive Design', level: 95, category: 'Design' },
+  { name: 'HTML5', category: 'Frontend' },
+  { name: 'CSS3', category: 'Frontend' },
+  { name: 'JavaScript', category: 'Frontend' },
+  { name: 'React.js', category: 'Frontend' },
+  { name: 'Tailwind CSS', category: 'Frontend' },
+  { name: 'Bootstrap', category: 'Frontend' },
+  { name: 'Node.js', category: 'Backend' },
+  { name: 'REST APIs', category: 'Backend' },
+  { name: 'Git & GitHub', category: 'Tools' },
+  { name: 'Responsive Design', category: 'Design' },
 ];
-
-const SkillBar = ({ name, level }: { name: string; level: number }) => {
-  return (
-    <div className="group">
-      <div className="flex justify-between items-center mb-2">
-        <span className="font-medium text-foreground group-hover:text-primary transition-colors">{name}</span>
-        <span className="text-sm text-muted-foreground">{level}%</span>
-      </div>
-      <div className="h-2 bg-secondary rounded-full overflow-hidden">
-        <div
-          className="h-full rounded-full transition-all duration-1000 ease-out"
-          style={{
-            width: `${level}%`,
-            background: 'linear-gradient(90deg, hsl(174 72% 50%), hsl(330 85% 60%))',
-          }}
-        />
-      </div>
-    </div>
-  );
-};
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-20 md:py-32 bg-card/30">
-      <div className="container mx-auto px-4 md:px-8">
+    <section id="skills" className="py-24 md:py-32 bg-secondary/50">
+      <div className="container mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="section-heading">
-            My <span className="gradient-text">Skills</span>
+          <div className="divider" />
+          <h2 className="section-heading text-foreground">
+            Skills & Expertise
           </h2>
           <p className="section-subheading">
             Technologies and tools I work with to bring ideas to life
@@ -47,36 +28,28 @@ const Skills = () => {
 
         {/* Skills Grid */}
         <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-x-12 gap-y-6">
+          <div className="flex flex-wrap justify-center gap-4">
             {skills.map((skill, index) => (
               <div
                 key={skill.name}
-                className="animate-fadeInUp"
+                className="skill-badge animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
-                <SkillBar name={skill.name} level={skill.level} />
+                <span>{skill.name}</span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Tech Stack Icons */}
-        <div className="mt-16">
-          <h3 className="text-center text-lg font-display font-semibold text-muted-foreground mb-8">
-            Technologies I Love Working With
-          </h3>
-          <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-            {['HTML5', 'CSS3', 'JavaScript', 'React', 'Node.js', 'Tailwind', 'Bootstrap', 'Git'].map((tech, index) => (
-              <div
-                key={tech}
-                className="group px-6 py-3 bg-secondary border border-border rounded-xl hover:border-primary/50 hover:bg-secondary/80 transition-all duration-300 cursor-default"
-                style={{ animationDelay: `${index * 0.05}s` }}
-              >
-                <span className="text-muted-foreground group-hover:text-primary transition-colors font-medium">
-                  {tech}
-                </span>
-              </div>
-            ))}
+        {/* Expertise Level */}
+        <div className="mt-16 max-w-2xl mx-auto">
+          <div className="professional-card p-8 text-center">
+            <h3 className="font-display text-xl font-semibold text-foreground mb-3">
+              Professional Level
+            </h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Advanced proficiency in modern web technologies with hands-on experience in building production-ready applications. Committed to writing clean, efficient, and maintainable code.
+            </p>
           </div>
         </div>
       </div>

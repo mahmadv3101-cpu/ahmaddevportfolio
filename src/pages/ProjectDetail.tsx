@@ -25,38 +25,38 @@ const projectsData: Record<string, {
 }> = {
   'elitewear': {
     title: 'EliteWear E-Commerce',
-    description: 'A premium e-commerce platform for footwear and accessories',
-    overview: 'EliteWear is a modern e-commerce website designed for premium footwear and accessories. The platform offers a seamless shopping experience with intuitive navigation, product filtering, and a sleek dark-themed interface that highlights the products beautifully.',
-    problem: 'Many e-commerce platforms lack visual appeal and fail to create an engaging shopping experience. Users often struggle with cluttered interfaces and poor product presentation.',
-    solution: 'I designed a clean, modern interface with a dark theme that makes products stand out. The site features smooth animations, responsive design, and intuitive navigation to enhance the shopping experience.',
+    description: 'Premium footwear and accessories platform',
+    overview: 'EliteWear is a modern e-commerce platform designed for premium footwear and fashion accessories. The website features a clean, professional design with intuitive navigation and a seamless shopping experience.',
+    problem: 'Many e-commerce platforms struggle with cluttered interfaces and poor user experience, making it difficult for customers to find and purchase products efficiently.',
+    solution: 'I designed and developed a clean, modern interface with organized product categories, clear product displays, and an intuitive shopping flow. The design emphasizes the premium nature of the products while maintaining excellent usability.',
     features: [
-      'Responsive design for all device sizes',
-      'Product catalog with category filtering',
-      'Size and variant selection',
-      'Contact form for customer inquiries',
-      'Smooth hover animations and transitions',
-      'Modern dark theme UI',
+      'Responsive design for all devices',
+      'Product category filtering',
+      'Clean product card layouts',
+      'Interactive shopping cart',
+      'Contact form integration',
+      'Modern UI/UX design',
     ],
-    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'Responsive Design', 'Flexbox', 'CSS Grid'],
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'Responsive Design'],
     images: [elitewearHero, elitewearShoes, elitewearAccessories, elitewearContact],
     liveUrl: '#',
     sourceUrl: '#',
   },
   'vikingz': {
     title: 'Vikingz Luxury Watches',
-    description: 'Elegant e-commerce website for premium watches',
-    overview: 'Vikingz is a luxury watch e-commerce platform inspired by Viking heritage, strength, and leadership. The website showcases premium watches with a sophisticated dark theme and golden accents that convey luxury and exclusivity.',
-    problem: 'Luxury brands need websites that reflect their premium positioning. Generic e-commerce templates fail to capture the essence of luxury and exclusivity.',
-    solution: 'I created a bespoke design with a dark theme and gold accents that embodies the luxury watch brand identity. The minimalist layout puts focus on the products while the typography and spacing create an air of sophistication.',
+    description: 'Elegant luxury watch showcase',
+    overview: 'Vikingz is a luxury watch e-commerce platform featuring a sophisticated dark theme that perfectly complements the premium nature of the products. The website showcases high-end timepieces with elegant typography and refined visual design.',
+    problem: 'Luxury brands need websites that reflect their premium positioning while still providing excellent functionality and user experience.',
+    solution: 'I created a dark-themed, elegant website that emphasizes the luxury aesthetic of the brand. The design uses refined typography, strategic white space, and high-quality imagery to create an immersive shopping experience.',
     features: [
-      'Luxurious dark theme with gold accents',
+      'Sophisticated dark theme',
       'Premium product showcase',
-      'Elegant typography and spacing',
-      'Responsive across all devices',
-      'Contact information section',
-      'Brand storytelling section',
+      'Elegant typography',
+      'Smooth animations',
+      'Responsive layout',
+      'Brand-focused design',
     ],
-    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design', 'Custom Fonts'],
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
     images: [vikingzHero, vikingzCollection, vikingzFooter],
     liveUrl: '#',
     sourceUrl: '#',
@@ -69,11 +69,11 @@ const ProjectDetail = () => {
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="text-center">
-          <h1 className="text-4xl font-display font-bold text-foreground mb-4">Project Not Found</h1>
-          <Link to="/" className="text-primary hover:underline">
-            Go back home
+          <h1 className="text-3xl font-display font-bold text-foreground mb-4">Project Not Found</h1>
+          <Link to="/" className="btn-primary">
+            Back to Home
           </Link>
         </div>
       </div>
@@ -84,129 +84,162 @@ const ProjectDetail = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       
-      <main className="pt-24 pb-20">
-        <div className="container mx-auto px-4 md:px-8">
-          {/* Back Button */}
-          <Link
-            to="/#projects"
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8"
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 bg-secondary/30">
+        <div className="container mx-auto px-6 lg:px-8">
+          <Link 
+            to="/#projects" 
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8 group"
           >
-            <ArrowLeft size={20} />
+            <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
             Back to Projects
           </Link>
-
-          {/* Project Header */}
-          <div className="mb-12">
-            <h1 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-4">
+          
+          <div className="max-w-4xl">
+            <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-4">
+              Case Study
+            </p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mb-6 tracking-tight">
               {project.title}
             </h1>
-            <p className="text-xl text-muted-foreground mb-6">
-              {project.description}
+            <p className="text-xl text-muted-foreground leading-relaxed mb-8">
+              {project.overview}
             </p>
             
-            {/* Action Buttons */}
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap items-center gap-4">
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-gradient flex items-center gap-2"
+                className="btn-primary"
               >
-                <ExternalLink size={18} />
+                <ExternalLink size={16} className="mr-2" />
                 Live Demo
               </a>
               <a
                 href={project.sourceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 rounded-lg border border-border bg-secondary hover:bg-secondary/80 font-semibold transition-all duration-300 flex items-center gap-2"
+                className="btn-outline"
               >
-                <Github size={18} />
+                <Github size={16} className="mr-2" />
                 Source Code
               </a>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Main Image */}
-          <div className="rounded-xl overflow-hidden border border-border mb-12">
+      {/* Main Image */}
+      <section className="pb-16">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="professional-card overflow-hidden rounded-lg">
             <img
               src={project.images[0]}
               alt={project.title}
-              className="w-full h-auto"
+              className="w-full aspect-video object-cover"
             />
           </div>
+        </div>
+      </section>
 
-          {/* Project Details Grid */}
-          <div className="grid lg:grid-cols-3 gap-8 mb-16">
-            {/* Overview */}
-            <div className="lg:col-span-2 space-y-8">
-              <div>
-                <h2 className="text-2xl font-display font-semibold text-foreground mb-4">Overview</h2>
-                <p className="text-muted-foreground leading-relaxed">{project.overview}</p>
-              </div>
-
-              <div>
-                <h2 className="text-2xl font-display font-semibold text-foreground mb-4">The Challenge</h2>
-                <p className="text-muted-foreground leading-relaxed">{project.problem}</p>
-              </div>
-
-              <div>
-                <h2 className="text-2xl font-display font-semibold text-foreground mb-4">The Solution</h2>
-                <p className="text-muted-foreground leading-relaxed">{project.solution}</p>
-              </div>
+      {/* Problem & Solution */}
+      <section className="py-16 bg-secondary/30">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <div className="professional-card p-8">
+              <h2 className="text-2xl font-display font-bold text-foreground mb-4">
+                The Challenge
+              </h2>
+              <p className="text-muted-foreground leading-relaxed">
+                {project.problem}
+              </p>
             </div>
-
-            {/* Sidebar */}
-            <div className="space-y-8">
-              {/* Features */}
-              <div className="bg-card p-6 rounded-xl border border-border">
-                <h3 className="text-lg font-display font-semibold text-foreground mb-4">Key Features</h3>
-                <ul className="space-y-3">
-                  {project.features.map((feature, index) => (
-                    <li key={index} className="flex items-start gap-3 text-sm text-muted-foreground">
-                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Technologies */}
-              <div className="bg-card p-6 rounded-xl border border-border">
-                <h3 className="text-lg font-display font-semibold text-foreground mb-4">Technologies</h3>
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-xs px-3 py-1.5 rounded-full bg-secondary text-muted-foreground border border-border"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
+            <div className="professional-card p-8">
+              <h2 className="text-2xl font-display font-bold text-foreground mb-4">
+                The Solution
+              </h2>
+              <p className="text-muted-foreground leading-relaxed">
+                {project.solution}
+              </p>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* More Screenshots */}
-          {project.images.length > 1 && (
+      {/* Features & Technologies */}
+      <section className="py-16">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {/* Features */}
             <div>
-              <h2 className="text-2xl font-display font-semibold text-foreground mb-6">More Screenshots</h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                {project.images.slice(1).map((image, index) => (
-                  <div key={index} className="rounded-xl overflow-hidden border border-border">
-                    <img
-                      src={image}
-                      alt={`${project.title} screenshot ${index + 2}`}
-                      className="w-full h-auto"
-                    />
-                  </div>
+              <h2 className="text-2xl font-display font-bold text-foreground mb-6">
+                Key Features
+              </h2>
+              <ul className="space-y-4">
+                {project.features.map((feature, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                    <span className="text-muted-foreground">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Technologies */}
+            <div>
+              <h2 className="text-2xl font-display font-bold text-foreground mb-6">
+                Technologies Used
+              </h2>
+              <div className="flex flex-wrap gap-3">
+                {project.technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="skill-badge"
+                  >
+                    {tech}
+                  </span>
                 ))}
               </div>
             </div>
-          )}
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* Project Gallery */}
+      <section className="py-16 bg-secondary/30">
+        <div className="container mx-auto px-6 lg:px-8">
+          <h2 className="text-2xl font-display font-bold text-foreground mb-8 text-center">
+            Project Gallery
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+            {project.images.slice(1).map((image, index) => (
+              <div key={index} className="professional-card overflow-hidden rounded-lg">
+                <img
+                  src={image}
+                  alt={`${project.title} screenshot ${index + 2}`}
+                  className="w-full aspect-video object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16">
+        <div className="container mx-auto px-6 lg:px-8 text-center">
+          <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4">
+            Interested in working together?
+          </h2>
+          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
+            Let's discuss how I can help bring your project to life.
+          </p>
+          <Link to="/#contact" className="btn-primary">
+            Get in Touch
+          </Link>
+        </div>
+      </section>
 
       <Footer />
     </div>

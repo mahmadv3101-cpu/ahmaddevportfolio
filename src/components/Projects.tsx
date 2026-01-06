@@ -1,4 +1,4 @@
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import elitewearHero from '@/assets/projects/elitewear-hero.jpeg';
@@ -10,7 +10,7 @@ const projects = [
     title: 'EliteWear E-Commerce',
     description: 'A premium e-commerce platform for footwear and accessories with modern UI, product filtering, and seamless shopping experience.',
     image: elitewearHero,
-    tech: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'Responsive Design'],
+    tech: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap'],
     liveUrl: '#',
     sourceUrl: '#',
   },
@@ -19,64 +19,51 @@ const projects = [
     title: 'Vikingz Luxury Watches',
     description: 'Elegant e-commerce website showcasing premium watches with sophisticated dark theme and luxurious brand aesthetics.',
     image: vikingzHero,
-    tech: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
+    tech: ['HTML5', 'CSS3', 'JavaScript', 'Responsive'],
     liveUrl: '#',
     sourceUrl: '#',
   },
 ];
 
-const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
+const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
+  const isEven = index % 2 === 0;
+  
   return (
-    <div className="group bg-card rounded-xl border border-border overflow-hidden card-hover">
+    <div className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
       {/* Image */}
-      <div className="relative overflow-hidden aspect-video">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        
-        {/* Overlay Links */}
-        <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground hover:scale-110 transition-transform"
-            aria-label="Live Demo"
-          >
-            <ExternalLink size={20} />
-          </a>
-          <a
-            href={project.sourceUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-12 h-12 rounded-full bg-secondary border border-border flex items-center justify-center text-foreground hover:scale-110 transition-transform"
-            aria-label="Source Code"
-          >
-            <Github size={20} />
-          </a>
-        </div>
+      <div className={`${!isEven ? 'lg:order-2' : ''}`}>
+        <Link to={`/project/${project.id}`} className="block group">
+          <div className="relative overflow-hidden rounded-lg professional-card">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors duration-300" />
+          </div>
+        </Link>
       </div>
 
       {/* Content */}
-      <div className="p-6">
+      <div className={`${!isEven ? 'lg:order-1 lg:text-right' : ''}`}>
+        <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-3">
+          Featured Project
+        </p>
         <Link to={`/project/${project.id}`}>
-          <h3 className="text-xl font-display font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+          <h3 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4 hover:text-accent transition-colors">
             {project.title}
           </h3>
         </Link>
-        <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+        <p className="text-muted-foreground leading-relaxed mb-6">
           {project.description}
         </p>
 
         {/* Tech Stack */}
-        <div className="flex flex-wrap gap-2">
-          {project.tech.slice(0, 4).map((tech) => (
+        <div className={`flex flex-wrap gap-2 mb-6 ${!isEven ? 'lg:justify-end' : ''}`}>
+          {project.tech.map((tech) => (
             <span
               key={tech}
-              className="text-xs px-3 py-1 rounded-full bg-secondary text-muted-foreground border border-border"
+              className="text-xs font-medium px-3 py-1 rounded-full bg-secondary text-muted-foreground"
             >
               {tech}
             </span>
@@ -84,12 +71,12 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
         </div>
 
         {/* Action Links */}
-        <div className="flex items-center gap-4 mt-5 pt-5 border-t border-border">
+        <div className={`flex items-center gap-5 ${!isEven ? 'lg:justify-end' : ''}`}>
           <a
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
+            className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-accent transition-colors"
           >
             <ExternalLink size={16} />
             Live Demo
@@ -98,11 +85,18 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
             href={project.sourceUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-accent transition-colors"
           >
             <Github size={16} />
             Source Code
           </a>
+          <Link
+            to={`/project/${project.id}`}
+            className="flex items-center gap-2 text-sm font-medium text-accent hover:text-accent/80 transition-colors"
+          >
+            View Details
+            <ArrowRight size={16} />
+          </Link>
         </div>
       </div>
     </div>
@@ -111,27 +105,28 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-20 md:py-32">
-      <div className="container mx-auto px-4 md:px-8">
+    <section id="projects" className="py-24 md:py-32 bg-background">
+      <div className="container mx-auto px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="section-heading">
-            My <span className="gradient-text">Projects</span>
+        <div className="text-center mb-20">
+          <div className="divider" />
+          <h2 className="section-heading text-foreground">
+            Featured Projects
           </h2>
           <p className="section-subheading">
             Showcasing real-world applications I've built with passion and precision
           </p>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+        {/* Projects List */}
+        <div className="space-y-24 max-w-6xl mx-auto">
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className="animate-fadeInUp"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="animate-fade-in-up"
+              style={{ animationDelay: `${index * 0.15}s` }}
             >
-              <ProjectCard project={project} />
+              <ProjectCard project={project} index={index} />
             </div>
           ))}
         </div>
