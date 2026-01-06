@@ -38,42 +38,43 @@ const projects = [
   },
 ];
 
-const MobileFrame = ({ image, title, isHovered }: { image: string; title: string; isHovered: boolean }) => {
+const LaptopFrame = ({ image, title, isHovered }: { image: string; title: string; isHovered: boolean }) => {
   return (
-    <div className="relative mx-auto w-[280px] sm:w-[320px]">
-      {/* Phone Frame */}
-      <div className="relative bg-gradient-to-b from-zinc-800 via-zinc-900 to-black rounded-[3rem] p-2 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.8)]">
-        {/* Side Buttons */}
-        <div className="absolute -left-1 top-24 w-1 h-8 bg-zinc-700 rounded-l-sm" />
-        <div className="absolute -left-1 top-36 w-1 h-12 bg-zinc-700 rounded-l-sm" />
-        <div className="absolute -left-1 top-52 w-1 h-12 bg-zinc-700 rounded-l-sm" />
-        <div className="absolute -right-1 top-32 w-1 h-16 bg-zinc-700 rounded-r-sm" />
-
-        {/* Inner bezel */}
-        <div className="relative bg-black rounded-[2.5rem] overflow-hidden">
-          {/* Dynamic Island */}
-          <div className="absolute top-3 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-full z-20 flex items-center justify-center gap-3">
-            <div className="w-3 h-3 rounded-full bg-zinc-900 ring-1 ring-zinc-800" />
-          </div>
-
+    <div className="relative mx-auto w-full max-w-[500px]">
+      {/* Laptop Screen */}
+      <div className="relative bg-gradient-to-b from-zinc-700 via-zinc-800 to-zinc-900 rounded-t-xl p-2 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.8)]">
+        {/* Camera */}
+        <div className="absolute top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-zinc-600 rounded-full" />
+        
+        {/* Screen Bezel */}
+        <div className="relative bg-black rounded-lg overflow-hidden mt-2">
           {/* Screen */}
-          <div className="relative overflow-hidden aspect-[9/16]">
+          <div className="relative overflow-hidden aspect-video">
             <img
               src={image}
               alt={title}
-              className={`w-full h-full object-cover object-center transition-transform duration-500 ${isHovered ? 'scale-[1.02]' : 'scale-100'}`}
+              className={`w-full h-full object-cover object-top transition-transform duration-500 ${isHovered ? 'scale-[1.02]' : 'scale-100'}`}
             />
             {/* subtle reflection */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none" />
           </div>
-
-          {/* Home Indicator */}
-          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/50 rounded-full z-20" />
         </div>
+      </div>
+      
+      {/* Laptop Base/Keyboard */}
+      <div className="relative">
+        {/* Hinge */}
+        <div className="h-2 bg-gradient-to-b from-zinc-800 to-zinc-700 rounded-b-sm" />
+        
+        {/* Base */}
+        <div className="h-3 bg-gradient-to-b from-zinc-600 via-zinc-700 to-zinc-800 rounded-b-xl mx-[-2%]" />
+        
+        {/* Bottom edge */}
+        <div className="h-1 bg-zinc-900 rounded-b-xl mx-[-1%] mt-[-1px]" />
       </div>
 
       {/* Glow Effect */}
-      <div className={`absolute -inset-6 bg-primary/25 rounded-[4rem] blur-2xl transition-opacity duration-500 -z-10 ${isHovered ? 'opacity-100' : 'opacity-0'}`} />
+      <div className={`absolute -inset-6 bg-primary/25 rounded-2xl blur-2xl transition-opacity duration-500 -z-10 ${isHovered ? 'opacity-100' : 'opacity-0'}`} />
     </div>
   );
 };
@@ -84,14 +85,14 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
   
   return (
     <div className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
-      {/* Mobile Frame */}
+      {/* Laptop Frame */}
       <div 
         className={`${!isEven ? 'lg:order-2' : ''} flex justify-center`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <Link to={`/project/${project.id}`} className="block group">
-          <MobileFrame image={project.image} title={project.title} isHovered={isHovered} />
+        <Link to={`/project/${project.id}`} className="block group w-full">
+          <LaptopFrame image={project.image} title={project.title} isHovered={isHovered} />
         </Link>
       </div>
 
