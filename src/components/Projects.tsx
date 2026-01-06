@@ -40,21 +40,26 @@ const projects = [
 
 const MobileFrame = ({ image, title, isHovered }: { image: string; title: string; isHovered: boolean }) => {
   return (
-    <div className="relative mx-auto w-[200px] sm:w-[240px]">
+    <div className="relative mx-auto w-[280px] sm:w-[320px]">
       {/* Phone Frame */}
-      <div className="relative bg-gradient-to-b from-zinc-700 to-zinc-900 rounded-[2.5rem] p-1.5 shadow-2xl">
+      <div className="relative bg-gradient-to-b from-zinc-800 via-zinc-900 to-black rounded-[3rem] p-2 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.8)]">
+        {/* Side Buttons */}
+        <div className="absolute -left-1 top-24 w-1 h-8 bg-zinc-700 rounded-l-sm" />
+        <div className="absolute -left-1 top-36 w-1 h-12 bg-zinc-700 rounded-l-sm" />
+        <div className="absolute -left-1 top-52 w-1 h-12 bg-zinc-700 rounded-l-sm" />
+        <div className="absolute -right-1 top-32 w-1 h-16 bg-zinc-700 rounded-r-sm" />
+        
         {/* Inner bezel */}
-        <div className="relative bg-black rounded-[2rem] p-1">
-          {/* Notch */}
-          <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-4 bg-black rounded-full z-10 flex items-center justify-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-zinc-800" />
-            <div className="w-8 h-2 rounded-full bg-zinc-800" />
+        <div className="relative bg-black rounded-[2.5rem] overflow-hidden">
+          {/* Dynamic Island */}
+          <div className="absolute top-3 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-full z-20 flex items-center justify-center gap-3">
+            <div className="w-3 h-3 rounded-full bg-zinc-900 ring-1 ring-zinc-800" />
           </div>
           
           {/* Screen */}
-          <div className="relative rounded-[1.5rem] overflow-hidden bg-background h-[380px] sm:h-[440px]">
+          <div className="relative overflow-hidden h-[520px] sm:h-[580px]">
             <div 
-              className={`absolute top-0 left-0 right-0 transition-transform duration-[4000ms] ease-in-out ${isHovered ? '-translate-y-[calc(100%-380px)] sm:-translate-y-[calc(100%-440px)]' : 'translate-y-0'}`}
+              className={`absolute top-0 left-0 right-0 transition-transform duration-[5000ms] ease-in-out ${isHovered ? '-translate-y-[55%]' : 'translate-y-0'}`}
             >
               <img
                 src={image}
@@ -63,17 +68,17 @@ const MobileFrame = ({ image, title, isHovered }: { image: string; title: string
               />
             </div>
             
-            {/* Screen Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
+            {/* Screen Reflection */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none" />
           </div>
           
           {/* Home Indicator */}
-          <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-24 h-1 bg-white/30 rounded-full" />
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/50 rounded-full z-20" />
         </div>
       </div>
       
       {/* Glow Effect */}
-      <div className={`absolute -inset-4 bg-primary/20 rounded-[3rem] blur-xl transition-opacity duration-500 -z-10 ${isHovered ? 'opacity-100' : 'opacity-0'}`} />
+      <div className={`absolute -inset-6 bg-primary/25 rounded-[4rem] blur-2xl transition-opacity duration-500 -z-10 ${isHovered ? 'opacity-100' : 'opacity-0'}`} />
     </div>
   );
 };
