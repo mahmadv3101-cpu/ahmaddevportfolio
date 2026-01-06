@@ -56,12 +56,12 @@ const MobileFrame = ({ image, title, isHovered }: { image: string; title: string
             <div className="w-3 h-3 rounded-full bg-zinc-900 ring-1 ring-zinc-800" />
           </div>
 
-          {/* Screen (fit whole screenshot inside) */}
-          <div className="relative overflow-hidden h-[520px] sm:h-[580px] bg-background">
+          {/* Screen */}
+          <div className="relative overflow-hidden h-[520px] sm:h-[580px]">
             <img
               src={image}
               alt={title}
-              className={`absolute inset-0 w-full h-full object-contain transition-transform duration-500 ${isHovered ? 'scale-[1.02]' : 'scale-100'}`}
+              className={`w-full h-full object-cover transition-transform duration-500 ${isHovered ? 'scale-[1.02]' : 'scale-100'}`}
             />
             {/* subtle reflection */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none" />
