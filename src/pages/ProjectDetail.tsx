@@ -72,7 +72,7 @@ const ProjectDetail = () => {
       <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="text-center">
           <h1 className="text-3xl font-display font-bold text-foreground mb-4">Project Not Found</h1>
-          <Link to="/" className="btn-primary">
+          <Link to="/" className="btn-gradient">
             Back to Home
           </Link>
         </div>
@@ -85,18 +85,21 @@ const ProjectDetail = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-secondary/30">
-        <div className="container mx-auto px-6 lg:px-8">
+      <section className="pt-32 pb-16 relative">
+        {/* Background Glow */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+        
+        <div className="container mx-auto px-6 lg:px-8 relative z-10">
           <Link 
             to="/#projects" 
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8 group"
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8 group"
           >
             <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
             Back to Projects
           </Link>
           
           <div className="max-w-4xl">
-            <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-4">
+            <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-4">
               Case Study
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mb-6 tracking-tight">
@@ -111,18 +114,18 @@ const ProjectDetail = () => {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary"
+                className="btn-gradient inline-flex items-center gap-2"
               >
-                <ExternalLink size={16} className="mr-2" />
+                <ExternalLink size={16} />
                 Live Demo
               </a>
               <a
                 href={project.sourceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-outline"
+                className="btn-outline inline-flex items-center gap-2"
               >
-                <Github size={16} className="mr-2" />
+                <Github size={16} />
                 Source Code
               </a>
             </div>
@@ -133,7 +136,7 @@ const ProjectDetail = () => {
       {/* Main Image */}
       <section className="pb-16">
         <div className="container mx-auto px-6 lg:px-8">
-          <div className="professional-card overflow-hidden rounded-lg">
+          <div className="rounded-xl overflow-hidden border border-border bg-card">
             <img
               src={project.images[0]}
               alt={project.title}
@@ -144,20 +147,20 @@ const ProjectDetail = () => {
       </section>
 
       {/* Problem & Solution */}
-      <section className="py-16 bg-secondary/30">
+      <section className="py-16 bg-card/50">
         <div className="container mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            <div className="professional-card p-8">
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <div className="pro-card">
               <h2 className="text-2xl font-display font-bold text-foreground mb-4">
-                The Challenge
+                The <span className="text-primary">Challenge</span>
               </h2>
               <p className="text-muted-foreground leading-relaxed">
                 {project.problem}
               </p>
             </div>
-            <div className="professional-card p-8">
+            <div className="pro-card">
               <h2 className="text-2xl font-display font-bold text-foreground mb-4">
-                The Solution
+                The <span className="gradient-text">Solution</span>
               </h2>
               <p className="text-muted-foreground leading-relaxed">
                 {project.solution}
@@ -179,7 +182,7 @@ const ProjectDetail = () => {
               <ul className="space-y-4">
                 {project.features.map((feature, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                     <span className="text-muted-foreground">{feature}</span>
                   </li>
                 ))}
@@ -207,18 +210,18 @@ const ProjectDetail = () => {
       </section>
 
       {/* Project Gallery */}
-      <section className="py-16 bg-secondary/30">
+      <section className="py-16 bg-card/50">
         <div className="container mx-auto px-6 lg:px-8">
           <h2 className="text-2xl font-display font-bold text-foreground mb-8 text-center">
             Project Gallery
           </h2>
           <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
             {project.images.slice(1).map((image, index) => (
-              <div key={index} className="professional-card overflow-hidden rounded-lg">
+              <div key={index} className="rounded-xl overflow-hidden border border-border bg-card group">
                 <img
                   src={image}
                   alt={`${project.title} screenshot ${index + 2}`}
-                  className="w-full aspect-video object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
             ))}
@@ -227,15 +230,17 @@ const ProjectDetail = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16">
-        <div className="container mx-auto px-6 lg:px-8 text-center">
+      <section className="py-16 relative">
+        <div className="absolute top-1/2 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl -translate-y-1/2" />
+        
+        <div className="container mx-auto px-6 lg:px-8 text-center relative z-10">
           <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4">
             Interested in working together?
           </h2>
           <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
             Let's discuss how I can help bring your project to life.
           </p>
-          <Link to="/#contact" className="btn-primary">
+          <Link to="/#contact" className="btn-gradient inline-flex items-center gap-2">
             Get in Touch
           </Link>
         </div>

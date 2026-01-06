@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Send, Mail, MapPin, Phone, Github, Linkedin, ArrowUpRight } from 'lucide-react';
+import { Send, Mail, MapPin, Phone, Github, Linkedin } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const Contact = () => {
@@ -32,15 +32,18 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-secondary/50">
-      <div className="container mx-auto px-6 lg:px-8">
+    <section id="contact" className="py-24 md:py-32 relative bg-card/50">
+      {/* Background Glow */}
+      <div className="absolute top-1/2 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-y-1/2" />
+      
+      <div className="container mx-auto px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="divider" />
-          <h2 className="section-heading text-foreground">
+          <h2 className="section-heading text-foreground mb-4">
             Get In Touch
           </h2>
-          <p className="section-subheading">
+          <p className="section-subheading mx-auto">
             Have a project in mind? Let's work together to bring your ideas to life.
           </p>
         </div>
@@ -49,7 +52,7 @@ const Contact = () => {
           {/* Contact Info */}
           <div className="lg:col-span-2">
             <h3 className="text-2xl font-display font-semibold text-foreground mb-6">
-              Let's Connect
+              Let's <span className="gradient-text">Connect</span>
             </h3>
             <p className="text-muted-foreground mb-10 leading-relaxed">
               I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out!
@@ -58,32 +61,32 @@ const Contact = () => {
             {/* Contact Details */}
             <div className="space-y-6 mb-10">
               <a href="mailto:ahmad@example.com" className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                  <Mail className="w-5 h-5 text-accent" />
+                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
+                  <Mail className="w-5 h-5 text-primary" />
                 </div>
                 <div>
                   <div className="text-sm text-muted-foreground">Email</div>
-                  <span className="text-foreground group-hover:text-accent transition-colors font-medium">
+                  <span className="text-foreground group-hover:text-primary transition-colors font-medium">
                     ahmad@example.com
                   </span>
                 </div>
               </a>
 
               <a href="tel:+923415765097" className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                  <Phone className="w-5 h-5 text-accent" />
+                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
+                  <Phone className="w-5 h-5 text-primary" />
                 </div>
                 <div>
                   <div className="text-sm text-muted-foreground">Phone</div>
-                  <span className="text-foreground group-hover:text-accent transition-colors font-medium">
+                  <span className="text-foreground group-hover:text-primary transition-colors font-medium">
                     +92 341 5765097
                   </span>
                 </div>
               </a>
 
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-accent" />
+                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-primary" />
                 </div>
                 <div>
                   <div className="text-sm text-muted-foreground">Location</div>
@@ -100,7 +103,7 @@ const Contact = () => {
                   href="https://github.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-11 h-11 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground hover:bg-secondary transition-all duration-300"
+                  className="w-11 h-11 rounded-lg border border-border bg-card flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary hover:bg-primary/10 transition-all duration-300"
                   aria-label="GitHub"
                 >
                   <Github size={18} />
@@ -109,7 +112,7 @@ const Contact = () => {
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-11 h-11 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground hover:bg-secondary transition-all duration-300"
+                  className="w-11 h-11 rounded-lg border border-border bg-card flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary hover:bg-primary/10 transition-all duration-300"
                   aria-label="LinkedIn"
                 >
                   <Linkedin size={18} />
@@ -120,7 +123,7 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div className="lg:col-span-3">
-            <div className="professional-card p-6 md:p-8">
+            <div className="pro-card">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
@@ -190,7 +193,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full btn-primary flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full btn-gradient flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     'Sending...'

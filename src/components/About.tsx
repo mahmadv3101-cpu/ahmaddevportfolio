@@ -25,15 +25,18 @@ const highlights = [
 
 const About = () => {
   return (
-    <section id="about" className="py-24 md:py-32 bg-background">
-      <div className="container mx-auto px-6 lg:px-8">
+    <section id="about" className="py-24 md:py-32 relative">
+      {/* Background Glow */}
+      <div className="absolute top-1/2 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-y-1/2" />
+      
+      <div className="container mx-auto px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="divider" />
-          <h2 className="section-heading text-foreground">
+          <h2 className="section-heading text-foreground mb-4">
             About Me
           </h2>
-          <p className="section-subheading">
+          <p className="section-subheading mx-auto">
             Passionate developer crafting digital experiences
           </p>
         </div>
@@ -42,7 +45,7 @@ const About = () => {
           {/* Left - Content */}
           <div className="animate-fade-in-up">
             <h3 className="text-2xl md:text-3xl font-display font-semibold mb-6 text-foreground">
-              Turning Ideas into Reality
+              Turning Ideas into <span className="gradient-text">Reality</span>
             </h3>
             <div className="space-y-5 text-muted-foreground leading-relaxed">
               <p>
@@ -58,16 +61,16 @@ const About = () => {
 
             {/* Quick Stats */}
             <div className="grid grid-cols-3 gap-6 mt-10">
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-display font-bold text-foreground">4+</div>
+              <div className="text-center pro-card">
+                <div className="text-3xl md:text-4xl font-display font-bold gradient-text">4+</div>
                 <div className="text-sm text-muted-foreground mt-1">Projects</div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-display font-bold text-foreground">10+</div>
+              <div className="text-center pro-card">
+                <div className="text-3xl md:text-4xl font-display font-bold gradient-text">10+</div>
                 <div className="text-sm text-muted-foreground mt-1">Technologies</div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-display font-bold text-foreground">100%</div>
+              <div className="text-center pro-card">
+                <div className="text-3xl md:text-4xl font-display font-bold gradient-text">100%</div>
                 <div className="text-sm text-muted-foreground mt-1">Dedication</div>
               </div>
             </div>
@@ -78,11 +81,11 @@ const About = () => {
             {highlights.map((item, index) => (
               <div
                 key={item.title}
-                className="professional-card p-6 animate-fade-in-up"
+                className="pro-card card-hover animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
-                  <item.icon className="w-6 h-6 text-accent" />
+                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center mb-4">
+                  <item.icon className="w-6 h-6 text-primary" />
                 </div>
                 <h4 className="font-display text-lg font-semibold text-foreground mb-2">{item.title}</h4>
                 <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>

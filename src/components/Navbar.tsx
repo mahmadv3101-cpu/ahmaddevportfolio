@@ -25,7 +25,7 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? 'bg-background/95 backdrop-blur-md shadow-sm border-b border-border' 
+          ? 'bg-background/95 backdrop-blur-md border-b border-border' 
           : 'bg-transparent'
       }`}
     >
@@ -33,18 +33,21 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-3 group">
-            <span className="font-display text-2xl font-bold text-foreground tracking-tight">
-              Ahmad<span className="text-accent">.</span>
+            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
+              <span className="text-primary-foreground font-display font-bold text-lg">A</span>
+            </div>
+            <span className="font-display text-xl font-bold text-foreground">
+              Ahmad<span className="text-primary">.</span>
             </span>
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-10">
+          <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
               <a 
                 key={item.href} 
                 href={item.href} 
-                className="nav-link text-sm tracking-wide uppercase"
+                className="nav-link text-sm font-medium"
               >
                 {item.label}
               </a>
@@ -53,7 +56,7 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <a href="#contact" className="btn-primary text-sm">
+            <a href="#contact" className="btn-gradient text-sm">
               Let's Talk
             </a>
           </div>
@@ -61,7 +64,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-foreground hover:text-accent transition-colors"
+            className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
             aria-label="Toggle menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -71,7 +74,7 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 bg-background border-b border-border transition-all duration-300 ${
+        className={`md:hidden absolute top-full left-0 right-0 bg-card border-b border-border transition-all duration-300 ${
           isOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-4'
         }`}
       >
@@ -81,7 +84,7 @@ const Navbar = () => {
               key={item.href}
               href={item.href}
               onClick={() => setIsOpen(false)}
-              className="py-3 px-4 text-foreground hover:text-accent hover:bg-secondary rounded-md transition-all font-medium"
+              className="py-3 px-4 text-foreground hover:text-primary hover:bg-secondary rounded-lg transition-all font-medium"
             >
               {item.label}
             </a>
@@ -89,7 +92,7 @@ const Navbar = () => {
           <a
             href="#contact"
             onClick={() => setIsOpen(false)}
-            className="btn-primary text-center mt-4"
+            className="btn-gradient text-center mt-4"
           >
             Let's Talk
           </a>
