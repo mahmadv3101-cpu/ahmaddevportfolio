@@ -47,7 +47,7 @@ const About = () => {
             <h3 className="text-2xl md:text-3xl font-display font-semibold mb-6 text-foreground">
               Turning Ideas into <span className="gradient-text">Reality</span>
             </h3>
-            <div className="space-y-5 text-muted-foreground leading-relaxed">
+            <div className="space-y-5 text-muted-foreground leading-relaxed text-justify">
               <p>
                 I'm a passionate Full Stack Web Developer with a strong focus on creating modern, responsive, and user-centric web applications. My journey in web development has equipped me with a comprehensive skill set spanning both frontend and backend technologies.
               </p>
@@ -60,18 +60,18 @@ const About = () => {
             </div>
 
             {/* Quick Stats */}
-            <div className="grid grid-cols-3 gap-6 mt-10">
-              <div className="text-center pro-card">
-                <div className="text-3xl md:text-4xl font-display font-bold gradient-text">4+</div>
-                <div className="text-sm text-muted-foreground mt-1">Projects</div>
+            <div className="flex justify-between mt-10 gap-3">
+              <div className="flex-1 text-center pro-card py-4 px-2">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-display font-bold gradient-text whitespace-nowrap">4+</div>
+                <div className="text-xs sm:text-sm text-muted-foreground mt-1">Projects</div>
               </div>
-              <div className="text-center pro-card">
-                <div className="text-3xl md:text-4xl font-display font-bold gradient-text">10+</div>
-                <div className="text-sm text-muted-foreground mt-1">Technologies</div>
+              <div className="flex-1 text-center pro-card py-4 px-2">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-display font-bold gradient-text whitespace-nowrap">10+</div>
+                <div className="text-xs sm:text-sm text-muted-foreground mt-1">Technologies</div>
               </div>
-              <div className="text-center pro-card">
-                <div className="text-3xl md:text-4xl font-display font-bold gradient-text">100%</div>
-                <div className="text-sm text-muted-foreground mt-1">Dedication</div>
+              <div className="flex-1 text-center pro-card py-4 px-2">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-display font-bold gradient-text whitespace-nowrap">100%</div>
+                <div className="text-xs sm:text-sm text-muted-foreground mt-1">Dedication</div>
               </div>
             </div>
           </div>
