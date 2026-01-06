@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 
 import elitewearHero from '@/assets/projects/elitewear-hero.jpeg';
 import vikingzHero from '@/assets/projects/vikingz-hero.jpeg';
-import vikingzCollection from '@/assets/projects/vikingz-collection.jpeg';
-import elitewearShoes from '@/assets/projects/elitewear-shoes.jpeg';
 
 const projects = [
   {
@@ -22,24 +20,6 @@ const projects = [
     description: 'Elegant e-commerce website showcasing premium watches with sophisticated dark theme and luxurious brand aesthetics.',
     image: vikingzHero,
     tech: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
-    liveUrl: '#',
-    sourceUrl: '#',
-  },
-  {
-    id: 'vikingz-collection',
-    title: 'Vikingz Collection Page',
-    description: 'Product showcase featuring premium watch collection with elegant card layouts and intuitive navigation.',
-    image: vikingzCollection,
-    tech: ['HTML5', 'CSS3', 'JavaScript', 'Grid Layout'],
-    liveUrl: '#',
-    sourceUrl: '#',
-  },
-  {
-    id: 'elitewear-catalog',
-    title: 'EliteWear Product Catalog',
-    description: 'Dynamic product catalog with category filtering, size selection, and responsive grid layout for optimal browsing.',
-    image: elitewearShoes,
-    tech: ['HTML5', 'CSS3', 'JavaScript', 'Flexbox', 'Grid'],
     liveUrl: '#',
     sourceUrl: '#',
   },
