@@ -23,39 +23,45 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-background/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled 
+          ? 'bg-background/95 backdrop-blur-md shadow-sm border-b border-border' 
+          : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
+      <div className="container mx-auto px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center font-display font-bold text-primary-foreground text-xl transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/30">
-              A
-            </div>
-            <span className="font-display font-semibold text-lg text-foreground">Ahmad</span>
+          <a href="#home" className="flex items-center gap-3 group">
+            <span className="font-display text-2xl font-bold text-foreground tracking-tight">
+              Ahmad<span className="text-accent">.</span>
+            </span>
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-10">
             {navItems.map((item) => (
-              <a key={item.href} href={item.href} className="nav-link text-sm font-medium">
+              <a 
+                key={item.href} 
+                href={item.href} 
+                className="nav-link text-sm tracking-wide uppercase"
+              >
                 {item.label}
               </a>
             ))}
-            <a
-              href="#contact"
-              className="btn-gradient text-sm py-2 px-5"
-            >
-              Hire Me
+          </div>
+
+          {/* CTA Button */}
+          <div className="hidden md:block">
+            <a href="#contact" className="btn-primary text-sm">
+              Let's Talk
             </a>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
+            className="md:hidden p-2 text-foreground hover:text-accent transition-colors"
             aria-label="Toggle menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -65,17 +71,17 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-md border-b border-border transition-all duration-300 ${
-          isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+        className={`md:hidden absolute top-full left-0 right-0 bg-background border-b border-border transition-all duration-300 ${
+          isOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-4'
         }`}
       >
-        <div className="container mx-auto px-4 py-4 flex flex-col gap-2">
+        <div className="container mx-auto px-6 py-6 flex flex-col gap-1">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
               onClick={() => setIsOpen(false)}
-              className="py-3 px-4 text-muted-foreground hover:text-foreground hover:bg-secondary/50 rounded-lg transition-all"
+              className="py-3 px-4 text-foreground hover:text-accent hover:bg-secondary rounded-md transition-all font-medium"
             >
               {item.label}
             </a>
@@ -83,9 +89,9 @@ const Navbar = () => {
           <a
             href="#contact"
             onClick={() => setIsOpen(false)}
-            className="btn-gradient text-center mt-2"
+            className="btn-primary text-center mt-4"
           >
-            Hire Me
+            Let's Talk
           </a>
         </div>
       </div>

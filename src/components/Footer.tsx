@@ -1,25 +1,36 @@
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-8 border-t border-border">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+    <footer className="py-12 bg-foreground text-primary-foreground">
+      <div className="container mx-auto px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo & Copyright */}
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center font-display font-bold text-primary-foreground text-sm">
-              A
-            </div>
-            <span className="text-muted-foreground text-sm">
-              © {currentYear} Ahmad. All rights reserved.
+          <div className="text-center md:text-left">
+            <span className="font-display text-xl font-bold mb-2 block">
+              Ahmad<span className="text-accent">.</span>
+            </span>
+            <span className="text-primary-foreground/60 text-sm">
+              © {currentYear} All rights reserved.
             </span>
           </div>
 
-          {/* Made with love */}
-          <div className="flex items-center gap-1 text-sm text-muted-foreground">
-            Made with <Heart className="w-4 h-4 text-accent fill-accent" /> by Ahmad
+          {/* Navigation */}
+          <div className="flex items-center gap-8">
+            <a href="#home" className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+              Home
+            </a>
+            <a href="#about" className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+              About
+            </a>
+            <a href="#projects" className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+              Projects
+            </a>
+            <a href="#contact" className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+              Contact
+            </a>
           </div>
 
           {/* Social Links */}
@@ -28,26 +39,26 @@ const Footer = () => {
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-secondary/80 transition-all"
+              className="w-10 h-10 rounded-full border border-primary-foreground/20 flex items-center justify-center text-primary-foreground/60 hover:text-primary-foreground hover:border-primary-foreground/40 transition-all"
               aria-label="GitHub"
             >
-              <Github size={18} />
+              <Github size={16} />
             </a>
             <a
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-secondary/80 transition-all"
+              className="w-10 h-10 rounded-full border border-primary-foreground/20 flex items-center justify-center text-primary-foreground/60 hover:text-primary-foreground hover:border-primary-foreground/40 transition-all"
               aria-label="LinkedIn"
             >
-              <Linkedin size={18} />
+              <Linkedin size={16} />
             </a>
             <a
               href="mailto:ahmad@example.com"
-              className="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-secondary/80 transition-all"
+              className="w-10 h-10 rounded-full border border-primary-foreground/20 flex items-center justify-center text-primary-foreground/60 hover:text-primary-foreground hover:border-primary-foreground/40 transition-all"
               aria-label="Email"
             >
-              <Mail size={18} />
+              <Mail size={16} />
             </a>
           </div>
         </div>
