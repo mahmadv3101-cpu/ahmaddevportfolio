@@ -10,6 +10,17 @@ import elitewearContact from '@/assets/projects/elitewear-contact.jpeg';
 import vikingzHero from '@/assets/projects/vikingz-hero.jpeg';
 import vikingzCollection from '@/assets/projects/vikingz-collection.jpeg';
 import vikingzFooter from '@/assets/projects/vikingz-footer.jpeg';
+import laxuraHero from '@/assets/projects/laxura-hero.jpeg';
+import laxuraAbout from '@/assets/projects/laxura-about.jpeg';
+import laxuraRooms from '@/assets/projects/laxura-rooms.jpeg';
+import laxuraAmenities from '@/assets/projects/laxura-amenities.jpeg';
+import laxuraFooter from '@/assets/projects/laxura-footer.jpeg';
+import learnifyHero from '@/assets/projects/learnify-hero.jpeg';
+import learnifyStats from '@/assets/projects/learnify-stats.jpeg';
+import learnifyCourses from '@/assets/projects/learnify-courses.jpeg';
+import learnifyWhy from '@/assets/projects/learnify-why.jpeg';
+import learnifyFooter from '@/assets/projects/learnify-footer.jpeg';
+import learnifyAllcourses from '@/assets/projects/learnify-allcourses.jpeg';
 
 const projectsData: Record<string, {
   title: string;
@@ -58,6 +69,44 @@ const projectsData: Record<string, {
     ],
     technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
     images: [vikingzHero, vikingzCollection, vikingzFooter],
+    liveUrl: '#',
+    sourceUrl: '#',
+  },
+  'laxura': {
+    title: 'Laxura Palace Hotel',
+    description: 'Luxury hotel booking website',
+    overview: 'Laxura Palace is a premium hotel booking website that showcases timeless elegance and modern luxury. The website features stunning visuals, room galleries, amenities showcase, and seamless booking experience.',
+    problem: 'Luxury hotels need digital presence that matches their real-world elegance and helps guests visualize the premium experience before booking.',
+    solution: 'I designed a sophisticated website with rich imagery, elegant typography, and intuitive navigation. The dark gold accent theme reflects the luxury brand while the clean layout makes booking effortless.',
+    features: [
+      'Premium visual design',
+      'Room gallery with details',
+      'Amenities showcase',
+      'Contact & booking forms',
+      'Responsive mobile design',
+      'Elegant animations',
+    ],
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'Responsive Design'],
+    images: [laxuraHero, laxuraAbout, laxuraRooms, laxuraAmenities, laxuraFooter],
+    liveUrl: '#',
+    sourceUrl: '#',
+  },
+  'learnify': {
+    title: 'Learnify Education',
+    description: 'Online education platform',
+    overview: 'Learnify is a comprehensive online education platform offering courses across multiple disciplines. The website features course catalogs, instructor profiles, student testimonials, and a modern learning interface.',
+    problem: 'Online learners need a platform that makes discovering courses easy and provides confidence in the quality of education offered.',
+    solution: 'I built an engaging education platform with clear course categories, instructor credentials, student success metrics, and intuitive course browsing. The design instills trust while making learning accessible.',
+    features: [
+      'Course catalog with filters',
+      'Instructor profiles',
+      'Student statistics',
+      'Category-based browsing',
+      'Clean course cards',
+      'Responsive design',
+    ],
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Responsive Design'],
+    images: [learnifyHero, learnifyStats, learnifyCourses, learnifyWhy, learnifyAllcourses, learnifyFooter],
     liveUrl: '#',
     sourceUrl: '#',
   },

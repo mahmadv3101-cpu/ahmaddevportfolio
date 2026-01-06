@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Github } from 'lucide-react';
 
 const navItems = [
   { label: 'Home', href: '#home' },
@@ -31,13 +31,10 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <a href="#home" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-display font-bold text-lg">A</span>
-            </div>
-            <span className="font-display text-xl font-bold text-foreground">
-              Ahmad<span className="text-primary">.</span>
+          {/* Logo - Text only */}
+          <a href="#home" className="flex items-center group">
+            <span className="font-display text-2xl font-bold text-foreground">
+              Ahmad<span className="text-primary">.dev</span>
             </span>
           </a>
 
@@ -54,8 +51,17 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* GitHub & CTA Button */}
+          <div className="hidden md:flex items-center gap-4">
+            <a
+              href="https://github.com/Muhammad-Ahmad-Lovable"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary hover:bg-primary/10 transition-all duration-300"
+              aria-label="GitHub"
+            >
+              <Github size={18} />
+            </a>
             <a href="#contact" className="btn-gradient text-sm">
               Let's Talk
             </a>
@@ -89,6 +95,16 @@ const Navbar = () => {
               {item.label}
             </a>
           ))}
+          <a
+            href="https://github.com/Muhammad-Ahmad-Lovable"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setIsOpen(false)}
+            className="py-3 px-4 text-foreground hover:text-primary hover:bg-secondary rounded-lg transition-all font-medium flex items-center gap-2"
+          >
+            <Github size={18} />
+            GitHub
+          </a>
           <a
             href="#contact"
             onClick={() => setIsOpen(false)}

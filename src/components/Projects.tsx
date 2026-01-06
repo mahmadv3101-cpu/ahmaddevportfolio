@@ -1,51 +1,92 @@
-import { ExternalLink, Github, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 import elitewearHero from '@/assets/projects/elitewear-hero.jpeg';
 import vikingzHero from '@/assets/projects/vikingz-hero.jpeg';
+import laxuraHero from '@/assets/projects/laxura-hero.jpeg';
+import learnifyHero from '@/assets/projects/learnify-hero.jpeg';
 
 const projects = [
   {
     id: 'elitewear',
     title: 'EliteWear E-Commerce',
-    description: 'A premium e-commerce platform for footwear and accessories with modern UI, product filtering, and seamless shopping experience.',
+    description: 'Premium footwear and accessories platform with modern UI and seamless shopping experience.',
     image: elitewearHero,
     tech: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap'],
-    liveUrl: '#',
-    sourceUrl: '#',
   },
   {
     id: 'vikingz',
     title: 'Vikingz Luxury Watches',
-    description: 'Elegant e-commerce website showcasing premium watches with sophisticated dark theme and luxurious brand aesthetics.',
+    description: 'Elegant e-commerce website with sophisticated dark theme for premium watches.',
     image: vikingzHero,
     tech: ['HTML5', 'CSS3', 'JavaScript', 'Responsive'],
-    liveUrl: '#',
-    sourceUrl: '#',
+  },
+  {
+    id: 'laxura',
+    title: 'Laxura Palace Hotel',
+    description: 'Luxury hotel booking website with elegant design and premium hospitality features.',
+    image: laxuraHero,
+    tech: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap'],
+  },
+  {
+    id: 'learnify',
+    title: 'Learnify Education',
+    description: 'Online education platform with courses, instructors, and modern learning experience.',
+    image: learnifyHero,
+    tech: ['HTML5', 'CSS3', 'JavaScript', 'React'],
   },
 ];
 
+const MobileFrame = ({ image, title, isHovered }: { image: string; title: string; isHovered: boolean }) => {
+  return (
+    <div className="relative mx-auto" style={{ width: '220px' }}>
+      {/* Phone Frame */}
+      <div className="relative bg-card rounded-[2.5rem] p-2 border-4 border-border shadow-2xl">
+        {/* Notch */}
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-5 bg-border rounded-full z-10" />
+        
+        {/* Screen */}
+        <div className="relative rounded-[2rem] overflow-hidden bg-background" style={{ height: '400px' }}>
+          <div 
+            className={`absolute inset-0 transition-transform duration-[3000ms] ease-linear ${isHovered ? '-translate-y-[60%]' : 'translate-y-0'}`}
+          >
+            <img
+              src={image}
+              alt={title}
+              className="w-full h-auto object-cover object-top"
+              style={{ minHeight: '200%' }}
+            />
+          </div>
+          
+          {/* Screen Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent pointer-events-none" />
+        </div>
+        
+        {/* Home Button */}
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-28 h-1 bg-border rounded-full" />
+      </div>
+      
+      {/* Glow Effect */}
+      <div className={`absolute -inset-4 bg-primary/20 rounded-[3rem] blur-xl transition-opacity duration-500 -z-10 ${isHovered ? 'opacity-100' : 'opacity-0'}`} />
+    </div>
+  );
+};
+
 const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
+  const [isHovered, setIsHovered] = useState(false);
   const isEven = index % 2 === 0;
   
   return (
     <div className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
-      {/* Image */}
-      <div className={`${!isEven ? 'lg:order-2' : ''}`}>
+      {/* Mobile Frame */}
+      <div 
+        className={`${!isEven ? 'lg:order-2' : ''} flex justify-center`}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <Link to={`/project/${project.id}`} className="block group">
-          <div className="relative overflow-hidden rounded-xl border border-border bg-card">
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <span className="inline-flex items-center gap-2 text-primary text-sm font-medium">
-                View Project <ArrowRight size={16} />
-              </span>
-            </div>
-          </div>
+          <MobileFrame image={project.image} title={project.title} isHovered={isHovered} />
         </Link>
       </div>
 
@@ -77,29 +118,11 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
 
         {/* Action Links */}
         <div className={`flex items-center gap-5 ${!isEven ? 'lg:justify-end' : ''}`}>
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors"
-          >
-            <ExternalLink size={16} />
-            Live Demo
-          </a>
-          <a
-            href={project.sourceUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors"
-          >
-            <Github size={16} />
-            Source Code
-          </a>
           <Link
             to={`/project/${project.id}`}
-            className="flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+            className="flex items-center gap-2 btn-gradient text-sm"
           >
-            View Details
+            View Project
             <ArrowRight size={16} />
           </Link>
         </div>
@@ -128,7 +151,7 @@ const Projects = () => {
         </div>
 
         {/* Projects List */}
-        <div className="space-y-24 max-w-6xl mx-auto">
+        <div className="space-y-24 max-w-5xl mx-auto">
           {projects.map((project, index) => (
             <div
               key={project.id}

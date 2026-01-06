@@ -60,14 +60,14 @@ const Contact = () => {
 
             {/* Contact Details */}
             <div className="space-y-6 mb-10">
-              <a href="mailto:ahmad@example.com" className="flex items-center gap-4 group">
+              <a href="mailto:mahmadv3101@gmail.com" className="flex items-center gap-4 group">
                 <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
                   <Mail className="w-5 h-5 text-primary" />
                 </div>
                 <div>
                   <div className="text-sm text-muted-foreground">Email</div>
                   <span className="text-foreground group-hover:text-primary transition-colors font-medium">
-                    ahmad@example.com
+                    mahmadv3101@gmail.com
                   </span>
                 </div>
               </a>
@@ -100,7 +100,7 @@ const Contact = () => {
               <div className="text-sm text-muted-foreground mb-4 font-medium">Follow Me</div>
               <div className="flex gap-3">
                 <a
-                  href="https://github.com"
+                  href="https://github.com/Muhammad-Ahmad-Lovable"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-11 h-11 rounded-lg border border-border bg-card flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary hover:bg-primary/10 transition-all duration-300"
@@ -109,7 +109,7 @@ const Contact = () => {
                   <Github size={18} />
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/muhammad-ahmad-a8a682397"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-11 h-11 rounded-lg border border-border bg-card flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary hover:bg-primary/10 transition-all duration-300"
