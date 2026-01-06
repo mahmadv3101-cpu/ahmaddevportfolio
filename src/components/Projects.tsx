@@ -33,24 +33,29 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
       {/* Image */}
       <div className={`${!isEven ? 'lg:order-2' : ''}`}>
         <Link to={`/project/${project.id}`} className="block group">
-          <div className="relative overflow-hidden rounded-lg professional-card">
+          <div className="relative overflow-hidden rounded-xl border border-border bg-card">
             <img
               src={project.image}
               alt={project.title}
               className="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span className="inline-flex items-center gap-2 text-primary text-sm font-medium">
+                View Project <ArrowRight size={16} />
+              </span>
+            </div>
           </div>
         </Link>
       </div>
 
       {/* Content */}
       <div className={`${!isEven ? 'lg:order-1 lg:text-right' : ''}`}>
-        <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-3">
+        <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-3">
           Featured Project
         </p>
         <Link to={`/project/${project.id}`}>
-          <h3 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4 hover:text-accent transition-colors">
+          <h3 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4 hover:text-primary transition-colors">
             {project.title}
           </h3>
         </Link>
@@ -63,7 +68,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
           {project.tech.map((tech) => (
             <span
               key={tech}
-              className="text-xs font-medium px-3 py-1 rounded-full bg-secondary text-muted-foreground"
+              className="text-xs font-medium px-3 py-1 rounded-full bg-secondary border border-border text-muted-foreground"
             >
               {tech}
             </span>
@@ -76,7 +81,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-accent transition-colors"
+            className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors"
           >
             <ExternalLink size={16} />
             Live Demo
@@ -85,14 +90,14 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
             href={project.sourceUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-accent transition-colors"
+            className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors"
           >
             <Github size={16} />
             Source Code
           </a>
           <Link
             to={`/project/${project.id}`}
-            className="flex items-center gap-2 text-sm font-medium text-accent hover:text-accent/80 transition-colors"
+            className="flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
           >
             View Details
             <ArrowRight size={16} />
@@ -105,15 +110,19 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-24 md:py-32 bg-background">
-      <div className="container mx-auto px-6 lg:px-8">
+    <section id="projects" className="py-24 md:py-32 relative">
+      {/* Background Glow */}
+      <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-20">
           <div className="divider" />
-          <h2 className="section-heading text-foreground">
+          <h2 className="section-heading text-foreground mb-4">
             Featured Projects
           </h2>
-          <p className="section-subheading">
+          <p className="section-subheading mx-auto">
             Showcasing real-world applications I've built with passion and precision
           </p>
         </div>
