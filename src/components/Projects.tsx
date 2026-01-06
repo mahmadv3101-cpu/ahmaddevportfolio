@@ -40,31 +40,36 @@ const projects = [
 
 const MobileFrame = ({ image, title, isHovered }: { image: string; title: string; isHovered: boolean }) => {
   return (
-    <div className="relative mx-auto" style={{ width: '220px' }}>
+    <div className="relative mx-auto w-[200px] sm:w-[240px]">
       {/* Phone Frame */}
-      <div className="relative bg-card rounded-[2.5rem] p-2 border-4 border-border shadow-2xl">
-        {/* Notch */}
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-5 bg-border rounded-full z-10" />
-        
-        {/* Screen */}
-        <div className="relative rounded-[2rem] overflow-hidden bg-background" style={{ height: '400px' }}>
-          <div 
-            className={`absolute inset-0 transition-transform duration-[3000ms] ease-linear ${isHovered ? '-translate-y-[60%]' : 'translate-y-0'}`}
-          >
-            <img
-              src={image}
-              alt={title}
-              className="w-full h-auto object-cover object-top"
-              style={{ minHeight: '200%' }}
-            />
+      <div className="relative bg-gradient-to-b from-zinc-700 to-zinc-900 rounded-[2.5rem] p-1.5 shadow-2xl">
+        {/* Inner bezel */}
+        <div className="relative bg-black rounded-[2rem] p-1">
+          {/* Notch */}
+          <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-4 bg-black rounded-full z-10 flex items-center justify-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-zinc-800" />
+            <div className="w-8 h-2 rounded-full bg-zinc-800" />
           </div>
           
-          {/* Screen Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent pointer-events-none" />
+          {/* Screen */}
+          <div className="relative rounded-[1.5rem] overflow-hidden bg-background h-[380px] sm:h-[440px]">
+            <div 
+              className={`absolute top-0 left-0 right-0 transition-transform duration-[4000ms] ease-in-out ${isHovered ? '-translate-y-[calc(100%-380px)] sm:-translate-y-[calc(100%-440px)]' : 'translate-y-0'}`}
+            >
+              <img
+                src={image}
+                alt={title}
+                className="w-full h-auto"
+              />
+            </div>
+            
+            {/* Screen Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
+          </div>
+          
+          {/* Home Indicator */}
+          <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-24 h-1 bg-white/30 rounded-full" />
         </div>
-        
-        {/* Home Button */}
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-28 h-1 bg-border rounded-full" />
       </div>
       
       {/* Glow Effect */}
