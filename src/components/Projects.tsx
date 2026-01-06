@@ -97,8 +97,8 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
       </div>
 
       {/* Content */}
-      <div className={`${!isEven ? 'lg:order-1 lg:text-right' : ''}`}>
-        <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-3">
+      <div className={`${!isEven ? 'lg:order-1' : ''}`}>
+        <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-4">
           Featured Project
         </p>
         <Link to={`/project/${project.id}`}>
@@ -111,7 +111,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
         </p>
 
         {/* Tech Stack */}
-        <div className={`flex flex-wrap gap-2 mb-6 ${!isEven ? 'lg:justify-end' : ''}`}>
+        <div className="flex flex-wrap gap-2 mb-6">
           {project.tech.map((tech) => (
             <span
               key={tech}
@@ -123,7 +123,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
         </div>
 
         {/* Action Links */}
-        <div className={`flex items-center gap-5 ${!isEven ? 'lg:justify-end' : ''}`}>
+        <div className="flex items-center gap-5">
           <Link
             to={`/project/${project.id}`}
             className="flex items-center gap-2 btn-gradient text-sm"

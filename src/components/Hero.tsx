@@ -60,7 +60,7 @@ const Hero = () => {
           {/* Social Links */}
           <div className="flex items-center justify-center gap-4 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
             <a
-              href="https://github.com"
+              href="https://github.com/mahmadv3101-cpu"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 rounded-lg border border-border bg-card flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary hover:bg-primary/10 transition-all duration-300"
@@ -69,7 +69,7 @@ const Hero = () => {
               <Github size={20} />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/muhammad-ahmad-a8a682397"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 rounded-lg border border-border bg-card flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary hover:bg-primary/10 transition-all duration-300"

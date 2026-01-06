@@ -100,7 +100,7 @@ const Contact = () => {
               <div className="text-sm text-muted-foreground mb-4 font-medium">Follow Me</div>
               <div className="flex gap-3">
                 <a
-                  href="https://github.com/Muhammad-Ahmad-Lovable"
+                  href="https://github.com/mahmadv3101-cpu"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-11 h-11 rounded-lg border border-border bg-card flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary hover:bg-primary/10 transition-all duration-300"
