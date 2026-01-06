@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ExternalLink, Github, CheckCircle } from 'lucide-react';
 import Navbar from '@/components/Navbar';
@@ -115,6 +116,10 @@ const projectsData: Record<string, {
 const ProjectDetail = () => {
   const { id } = useParams();
   const project = id ? projectsData[id] : null;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   if (!project) {
     return (
