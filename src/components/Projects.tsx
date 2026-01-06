@@ -57,11 +57,11 @@ const MobileFrame = ({ image, title, isHovered }: { image: string; title: string
           </div>
 
           {/* Screen */}
-          <div className="relative overflow-hidden aspect-[9/19.5]">
+          <div className="relative overflow-hidden aspect-[9/16]">
             <img
               src={image}
               alt={title}
-              className={`w-full h-full object-cover object-top transition-transform duration-500 ${isHovered ? 'scale-[1.02]' : 'scale-100'}`}
+              className={`w-full h-full object-cover object-center transition-transform duration-500 ${isHovered ? 'scale-[1.02]' : 'scale-100'}`}
             />
             {/* subtle reflection */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none" />
