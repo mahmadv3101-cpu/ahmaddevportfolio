@@ -22,6 +22,9 @@ import learnifyCourses from '@/assets/projects/learnify-courses.jpeg';
 import learnifyWhy from '@/assets/projects/learnify-why.jpeg';
 import learnifyFooter from '@/assets/projects/learnify-footer.jpeg';
 import learnifyAllcourses from '@/assets/projects/learnify-allcourses.jpeg';
+import golfHero from '@/assets/projects/golf-hero.png';
+import golfFeatures from '@/assets/projects/golf-features.png';
+import golfFaq from '@/assets/projects/golf-faq.png';
 
 const projectsData: Record<string, {
   title: string;
@@ -109,6 +112,25 @@ const projectsData: Record<string, {
     technologies: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Responsive Design'],
     images: [learnifyHero, learnifyStats, learnifyCourses, learnifyWhy, learnifyAllcourses, learnifyFooter],
     liveUrl: '#',
+    sourceUrl: '#',
+  },
+  'golf-forecaster': {
+    title: 'Golf Webflow SaaS Landing Page',
+    description: 'Futuristic golf analysis SaaS platform',
+    overview: 'A cutting-edge SaaS landing page for a real-time golf analysis tool. Built on Webflow, it features a dark futuristic UI with animated stats, shot breakdowns, audio feedback features, and an engaging FAQ section.',
+    problem: 'Golf tech startups need landing pages that convey innovation and trust while clearly explaining complex AI-driven features to a sports audience.',
+    solution: 'I designed a bold, dark-themed landing page with real-time stat visualizations, feature showcases with immersive imagery, and a clean FAQ accordion — all optimized for conversions and built entirely in Webflow.',
+    features: [
+      'Dark futuristic UI design',
+      'Real-time stat visualizations',
+      'AI shot breakdown showcase',
+      'Audio feedback feature section',
+      'FAQ accordion section',
+      'Fully responsive layout',
+    ],
+    technologies: ['Webflow', 'CSS3', 'JavaScript', 'SaaS Design', 'Responsive Design'],
+    images: [golfHero, golfFeatures, golfFaq],
+    liveUrl: 'https://muhammads-awesome-site-de3b47.webflow.io/',
     sourceUrl: '#',
   },
 };
