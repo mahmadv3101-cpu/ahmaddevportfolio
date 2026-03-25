@@ -6,6 +6,7 @@ import elitewearHero from '@/assets/projects/elitewear-hero.jpeg';
 import vikingzHero from '@/assets/projects/vikingz-hero.jpeg';
 import laxuraHero from '@/assets/projects/laxura-hero.jpeg';
 import learnifyHero from '@/assets/projects/learnify-hero.jpeg';
+import golfHero from '@/assets/projects/golf-hero.png';
 
 const projects = [
   {
@@ -35,6 +36,13 @@ const projects = [
     description: 'Online education platform with courses, instructors, and modern learning experience.',
     image: learnifyHero,
     tech: ['HTML5', 'CSS3', 'JavaScript', 'React'],
+  },
+  {
+    id: 'golf-forecaster',
+    title: 'Golf Webflow SaaS Landing Page',
+    description: 'A futuristic golf analysis SaaS landing page with real-time shot breakdown, audio feedback, and modern dark UI.',
+    image: golfHero,
+    tech: ['Webflow', 'CSS3', 'JavaScript', 'SaaS'],
   },
 ];
 
