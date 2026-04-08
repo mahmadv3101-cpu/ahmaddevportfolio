@@ -25,6 +25,8 @@ import learnifyAllcourses from '@/assets/projects/learnify-allcourses.jpeg';
 import golfHero from '@/assets/projects/golf-hero.png';
 import golfFeatures from '@/assets/projects/golf-features.png';
 import golfFaq from '@/assets/projects/golf-faq.png';
+import netflixHero from '@/assets/projects/netflix-hero.png';
+import netflixFeatures from '@/assets/projects/netflix-features.png';
 
 const projectsData: Record<string, {
   title: string;
