@@ -45,6 +45,13 @@ const projects = [
     image: golfHero,
     tech: ['Webflow', 'CSS3', 'JavaScript', 'SaaS'],
   },
+  {
+    id: 'netflix-clone',
+    title: 'Netflix Clone',
+    description: 'A pixel-perfect Netflix homepage clone built with pure HTML & CSS, replicating the streaming giant\'s iconic dark UI and layout.',
+    image: netflixHero,
+    tech: ['HTML5', 'CSS3'],
+  },
 ];
 
 const LaptopFrame = ({ image, title, isHovered }: { image: string; title: string; isHovered: boolean }) => {
