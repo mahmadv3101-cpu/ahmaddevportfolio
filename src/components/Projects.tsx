@@ -7,6 +7,7 @@ import vikingzHero from '@/assets/projects/vikingz-hero.jpeg';
 import laxuraHero from '@/assets/projects/laxura-hero.jpeg';
 import learnifyHero from '@/assets/projects/learnify-hero.jpeg';
 import golfHero from '@/assets/projects/golf-hero.png';
+import netflixHero from '@/assets/projects/netflix-hero.png';
 
 const projects = [
   {
