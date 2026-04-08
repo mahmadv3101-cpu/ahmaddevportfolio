@@ -7,6 +7,7 @@ import vikingzHero from '@/assets/projects/vikingz-hero.jpeg';
 import laxuraHero from '@/assets/projects/laxura-hero.jpeg';
 import learnifyHero from '@/assets/projects/learnify-hero.jpeg';
 import golfHero from '@/assets/projects/golf-hero.png';
+import netflixHero from '@/assets/projects/netflix-hero.png';
 
 const projects = [
   {
@@ -43,6 +44,13 @@ const projects = [
     description: 'A futuristic golf analysis SaaS landing page with real-time shot breakdown, audio feedback, and modern dark UI.',
     image: golfHero,
     tech: ['Webflow', 'CSS3', 'JavaScript', 'SaaS'],
+  },
+  {
+    id: 'netflix-clone',
+    title: 'Netflix Clone',
+    description: 'A pixel-perfect Netflix homepage clone built with pure HTML & CSS, replicating the streaming giant\'s iconic dark UI and layout.',
+    image: netflixHero,
+    tech: ['HTML5', 'CSS3'],
   },
 ];
 

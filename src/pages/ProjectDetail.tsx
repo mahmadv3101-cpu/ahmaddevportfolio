@@ -25,6 +25,8 @@ import learnifyAllcourses from '@/assets/projects/learnify-allcourses.jpeg';
 import golfHero from '@/assets/projects/golf-hero.png';
 import golfFeatures from '@/assets/projects/golf-features.png';
 import golfFaq from '@/assets/projects/golf-faq.png';
+import netflixHero from '@/assets/projects/netflix-hero.png';
+import netflixFeatures from '@/assets/projects/netflix-features.png';
 
 const projectsData: Record<string, {
   title: string;
@@ -132,6 +134,25 @@ const projectsData: Record<string, {
     images: [golfHero, golfFeatures, golfFaq],
     liveUrl: 'https://muhammads-awesome-site-de3b47.webflow.io/',
     sourceUrl: '#',
+  },
+  'netflix-clone': {
+    title: 'Netflix Clone',
+    description: 'A pixel-perfect Netflix homepage recreation',
+    overview: 'A faithful recreation of the Netflix landing page built entirely with HTML and CSS. This project demonstrates strong front-end fundamentals by replicating Netflix\'s iconic dark UI, responsive hero section, content rows, and call-to-action components — all without any JavaScript frameworks.',
+    problem: 'Recreating a complex, production-grade UI like Netflix requires a deep understanding of CSS layout techniques, responsive design, and attention to pixel-level detail.',
+    solution: 'I meticulously rebuilt the Netflix homepage from scratch using semantic HTML5 and modern CSS3, including Flexbox and Grid layouts, custom gradients, and media queries to ensure a fully responsive experience across all screen sizes.',
+    features: [
+      'Pixel-perfect Netflix UI recreation',
+      'Responsive hero section with CTA',
+      'Content category rows layout',
+      'FAQ accordion section',
+      'Email signup form design',
+      'Fully responsive across devices',
+    ],
+    technologies: ['HTML5', 'CSS3', 'Responsive Design'],
+    images: [netflixHero, netflixFeatures],
+    liveUrl: 'https://movie-website-ivory-iota.vercel.app/',
+    sourceUrl: 'https://mahmadv3101-cpu.github.io/netflix-clone/',
   },
 };
 
