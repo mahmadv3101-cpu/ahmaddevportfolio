@@ -56,7 +56,7 @@ const projectsData: Record<string, {
     ],
     technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'Responsive Design'],
     images: [elitewearHero, elitewearShoes, elitewearAccessories, elitewearContact],
-    liveUrl: '#',
+    liveUrl: 'https://iridescent-brigadeiros-581722.netlify.app/',
     sourceUrl: '#',
   },
   'vikingz': {
@@ -75,7 +75,7 @@ const projectsData: Record<string, {
     ],
     technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
     images: [vikingzHero, vikingzCollection, vikingzFooter],
-    liveUrl: '#',
+    liveUrl: 'https://vikingzstore.netlify.app/',
     sourceUrl: '#',
   },
   'laxura': {
@@ -94,7 +94,7 @@ const projectsData: Record<string, {
     ],
     technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'Responsive Design'],
     images: [laxuraHero, laxuraAbout, laxuraRooms, laxuraAmenities, laxuraFooter],
-    liveUrl: '#',
+    liveUrl: 'https://the-grand-arrival.vercel.app/',
     sourceUrl: '#',
   },
   'learnify': {
@@ -113,7 +113,7 @@ const projectsData: Record<string, {
     ],
     technologies: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Responsive Design'],
     images: [learnifyHero, learnifyStats, learnifyCourses, learnifyWhy, learnifyAllcourses, learnifyFooter],
-    liveUrl: '#',
+    liveUrl: 'https://courseseekho-f3az.vercel.app/',
     sourceUrl: '#',
   },
   'golf-forecaster': {
