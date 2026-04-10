@@ -207,24 +207,28 @@ const ProjectDetail = () => {
             </p>
             
             <div className="flex flex-wrap items-center gap-4">
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-gradient inline-flex items-center gap-2"
-              >
-                <ExternalLink size={16} />
-                Live Demo
-              </a>
-              <a
-                href={project.sourceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-outline inline-flex items-center gap-2"
-              >
-                <Github size={16} />
-                Source Code
-              </a>
+              {project.liveUrl && project.liveUrl !== '#' && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-gradient inline-flex items-center gap-2"
+                >
+                  <ExternalLink size={16} />
+                  Live Demo
+                </a>
+              )}
+              {project.sourceUrl && project.sourceUrl !== '#' && (
+                <a
+                  href={project.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-outline inline-flex items-center gap-2"
+                >
+                  <Github size={16} />
+                  Source Code
+                </a>
+              )}
             </div>
           </div>
         </div>
