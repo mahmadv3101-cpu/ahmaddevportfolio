@@ -38,7 +38,7 @@ const Hero = () => {
 
           {/* Role */}
           <p className="text-2xl md:text-3xl text-muted-foreground font-medium mb-6 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            Full Stack Web Developer
+            Frontend Web Developer
           </p>
 
           {/* Tagline */}

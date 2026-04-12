@@ -49,7 +49,7 @@ const About = () => {
             </h3>
             <div className="space-y-5 text-muted-foreground leading-relaxed text-justify">
               <p>
-                I'm a passionate Full Stack Web Developer with a strong focus on creating modern, responsive, and user-centric web applications. My journey in web development has equipped me with a comprehensive skill set spanning both frontend and backend technologies.
+                I'm a passionate Frontend Web Developer with a strong focus on creating modern, responsive, and user-centric web applications. My journey in web development has equipped me with a comprehensive skill set in frontend technologies and UI/UX design.
               </p>
               <p>
                 I believe in writing clean, maintainable code that not only works flawlessly but is also a pleasure for other developers to work with. Every project I undertake is an opportunity to push boundaries and deliver solutions that exceed expectations.

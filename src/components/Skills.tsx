@@ -5,10 +5,10 @@ const skills = [
   { name: 'React.js', category: 'Frontend' },
   { name: 'Tailwind CSS', category: 'Frontend' },
   { name: 'Bootstrap', category: 'Frontend' },
-  { name: 'Node.js', category: 'Backend' },
-  { name: 'REST APIs', category: 'Backend' },
+  { name: 'TypeScript', category: 'Frontend' },
   { name: 'Git & GitHub', category: 'Tools' },
   { name: 'Responsive Design', category: 'Design' },
+  { name: 'UI/UX Design', category: 'Design' },
 ];
 
 const Skills = () => {
@@ -51,7 +51,7 @@ const Skills = () => {
               Advanced / Professional Level
             </div>
             <p className="text-muted-foreground leading-relaxed">
-              Hands-on experience in building production-ready applications with a strong foundation in both frontend and backend technologies. Committed to writing clean, efficient, and maintainable code.
+               Hands-on experience in building production-ready applications with a strong foundation in frontend technologies and modern UI frameworks. Committed to writing clean, efficient, and maintainable code.
             </p>
           </div>
         </div>
