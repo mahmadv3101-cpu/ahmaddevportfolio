@@ -1,59 +1,75 @@
-const skills = [
-  { name: 'HTML5', category: 'Frontend' },
-  { name: 'CSS3', category: 'Frontend' },
-  { name: 'JavaScript', category: 'Frontend' },
-  { name: 'React.js', category: 'Frontend' },
-  { name: 'Tailwind CSS', category: 'Frontend' },
-  { name: 'Bootstrap', category: 'Frontend' },
-  { name: 'TypeScript', category: 'Frontend' },
-  { name: 'Git & GitHub', category: 'Tools' },
-  { name: 'Responsive Design', category: 'Design' },
-  { name: 'UI/UX Design', category: 'Design' },
+import { motion } from 'framer-motion';
+import Bento from './Bento';
+
+const skillGroups = [
+  {
+    title: 'No-Code',
+    accent: 'from-primary to-accent',
+    items: ['Webflow', 'Framer', 'CMS Setup', 'Interactions', 'Webflow Ecommerce'],
+  },
+  {
+    title: 'Frontend',
+    accent: 'from-accent to-primary',
+    items: ['React', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'Bootstrap'],
+  },
+  {
+    title: 'Motion & Design',
+    accent: 'from-primary to-primary-glow',
+    items: ['Framer Motion', 'GSAP', 'Figma', 'UI/UX', 'Responsive Design'],
+  },
+  {
+    title: 'Workflow',
+    accent: 'from-accent to-primary-glow',
+    items: ['Git & GitHub', 'Vite', 'Vercel', 'Netlify', 'Lighthouse'],
+  },
 ];
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-24 md:py-32 relative bg-card/50">
-      {/* Background Glow */}
-      <div className="absolute top-1/2 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl -translate-y-1/2" />
-      
+    <section id="skills" className="relative py-28 md:py-36 noise">
+      <div className="absolute top-1/3 right-0 w-[30rem] h-[30rem] bg-accent/15 rounded-full blur-3xl" />
+
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="divider" />
-          <h2 className="section-heading text-foreground mb-4">
-            Skills & Expertise
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mb-16"
+        >
+          <div className="eyebrow mb-5">02 — Toolkit</div>
+          <h2 className="section-heading text-foreground mb-6">
+            The stack behind the <span className="gradient-text italic font-medium">craft</span>.
           </h2>
-          <p className="section-subheading mx-auto">
-            Technologies and tools I work with to bring ideas to life
+          <p className="section-subheading">
+            A focused toolkit for designing, building and shipping high-end interactive websites end-to-end.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Skills Grid */}
-        <div className="max-w-4xl mx-auto">
-          <div className="flex flex-wrap justify-center gap-4">
-            {skills.map((skill, index) => (
-              <div
-                key={skill.name}
-                className="skill-badge animate-fade-in-up cursor-default"
-                style={{ animationDelay: `${index * 0.05}s` }}
-              >
-                <span>{skill.name}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Expertise Level */}
-        <div className="mt-16 max-w-2xl mx-auto">
-          <div className="pro-card text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 text-primary text-sm font-medium mb-4">
-              Advanced / Professional Level
-            </div>
-            <p className="text-muted-foreground leading-relaxed">
-               Hands-on experience in building production-ready applications with a strong foundation in frontend technologies and modern UI frameworks. Committed to writing clean, efficient, and maintainable code.
-            </p>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-6xl mx-auto">
+          {skillGroups.map((group, idx) => (
+            <motion.div
+              key={group.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.5, delay: idx * 0.08 }}
+            >
+              <Bento className="p-8 h-full">
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className={`font-display text-2xl font-semibold bg-gradient-to-r ${group.accent} bg-clip-text text-transparent`}>
+                    {group.title}
+                  </h3>
+                  <span className="text-xs text-muted-foreground font-mono">0{idx + 1}</span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {group.items.map((s) => (
+                    <span key={s} className="skill-badge cursor-default">{s}</span>
+                  ))}
+                </div>
+              </Bento>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

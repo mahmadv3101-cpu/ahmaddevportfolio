@@ -1,97 +1,87 @@
-import { Code2, Palette, Rocket, Users } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Code2, Palette, Zap, Layers, Globe, Sparkles } from 'lucide-react';
+import Bento from './Bento';
 
-const highlights = [
-  {
-    icon: Code2,
-    title: 'Clean Code',
-    description: 'Writing maintainable, scalable code following best practices',
-  },
-  {
-    icon: Palette,
-    title: 'UI/UX Focus',
-    description: 'Creating intuitive interfaces with attention to detail',
-  },
-  {
-    icon: Rocket,
-    title: 'Performance',
-    description: 'Optimizing for speed and exceptional user experience',
-  },
-  {
-    icon: Users,
-    title: 'Collaboration',
-    description: 'Working effectively with teams and stakeholders',
-  },
+const stats = [
+  { value: '6+', label: 'Shipped projects' },
+  { value: '3+', label: 'Years coding' },
+  { value: '100%', label: 'Client focus' },
 ];
 
 const About = () => {
   return (
-    <section id="about" className="py-24 md:py-32 relative">
-      {/* Background Glow */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-y-1/2" />
-      
+    <section id="about" className="relative py-28 md:py-36 noise">
+      <div className="absolute top-1/3 -left-32 w-[30rem] h-[30rem] bg-primary/15 rounded-full blur-3xl" />
+
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="divider" />
-          <h2 className="section-heading text-foreground mb-4">
-            About Me
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mb-16"
+        >
+          <div className="eyebrow mb-5">01 — About</div>
+          <h2 className="section-heading text-foreground mb-6">
+            A developer who designs.<br />
+            <span className="gradient-text italic font-medium">A designer who codes.</span>
           </h2>
-          <p className="section-subheading mx-auto">
-            Passionate developer crafting digital experiences
+          <p className="section-subheading">
+            I build premium websites where craft meets conversion — blending pixel-level design with performant frontend code.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start max-w-6xl mx-auto">
-          {/* Left - Content */}
-          <div className="animate-fade-in-up">
-            <h3 className="text-2xl md:text-3xl font-display font-semibold mb-6 text-foreground">
-              Turning Ideas into <span className="gradient-text">Reality</span>
+        {/* Bento grid */}
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-5 max-w-6xl mx-auto">
+          {/* Bio */}
+          <Bento className="md:col-span-4 p-8 md:p-10">
+            <div className="flex items-center gap-2 mb-6">
+              <Sparkles className="w-4 h-4 text-primary" />
+              <span className="text-xs uppercase tracking-[0.2em] text-primary font-medium">The story</span>
+            </div>
+            <h3 className="text-2xl md:text-3xl font-display font-semibold text-foreground mb-6 tracking-tight">
+              I help founders, agencies and creators ship websites that feel handcrafted — not templated.
             </h3>
-            <div className="space-y-5 text-muted-foreground leading-relaxed text-justify">
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                I'm a passionate Frontend Web Developer with a strong focus on creating modern, responsive, and user-centric web applications. My journey in web development has equipped me with a comprehensive skill set in frontend technologies and UI/UX design.
+                I'm a BSCS student and full-time Frontend & No-Code Developer. I specialize in turning Figma files into pixel-perfect, butter-smooth experiences using <span className="text-foreground">Webflow</span>, <span className="text-foreground">Framer</span>, and <span className="text-foreground">React + Tailwind</span>.
               </p>
               <p>
-                I believe in writing clean, maintainable code that not only works flawlessly but is also a pleasure for other developers to work with. Every project I undertake is an opportunity to push boundaries and deliver solutions that exceed expectations.
-              </p>
-              <p>
-                When I'm not coding, I'm exploring new technologies, contributing to open-source projects, and continuously expanding my knowledge to stay at the forefront of web development trends.
+                My focus is the details most developers skip — micro-interactions, type, spacing, motion, and the conversion-driven structure that turns a visitor into a client.
               </p>
             </div>
+          </Bento>
 
-            {/* Quick Stats */}
-            <div className="flex justify-between mt-10 gap-3">
-              <div className="flex-1 text-center pro-card py-4 px-2">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-display font-bold gradient-text whitespace-nowrap">4+</div>
-                <div className="text-xs sm:text-sm text-muted-foreground mt-1">Projects</div>
-              </div>
-              <div className="flex-1 text-center pro-card py-4 px-2">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-display font-bold gradient-text whitespace-nowrap">10+</div>
-                <div className="text-xs sm:text-sm text-muted-foreground mt-1">Technologies</div>
-              </div>
-              <div className="flex-1 text-center pro-card py-4 px-2">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-display font-bold gradient-text whitespace-nowrap">100%</div>
-                <div className="text-xs sm:text-sm text-muted-foreground mt-1">Dedication</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right - Highlights Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {highlights.map((item, index) => (
-              <div
-                key={item.title}
-                className="pro-card card-hover animate-fade-in-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center mb-4">
-                  <item.icon className="w-6 h-6 text-primary" />
+          {/* Stats */}
+          <Bento className="md:col-span-2 p-8 flex flex-col justify-between">
+            <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">By the numbers</div>
+            <div className="space-y-6 mt-6">
+              {stats.map((s) => (
+                <div key={s.label} className="flex items-baseline justify-between border-b border-border/60 pb-3">
+                  <span className="text-4xl font-display font-semibold gradient-text">{s.value}</span>
+                  <span className="text-sm text-muted-foreground">{s.label}</span>
                 </div>
-                <h4 className="font-display text-lg font-semibold text-foreground mb-2">{item.title}</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+              ))}
+            </div>
+          </Bento>
+
+          {/* Capabilities */}
+          {[
+            { Icon: Palette, title: 'Design-led', text: 'Awwwards-grade UI with a sharp eye for type & spacing.' },
+            { Icon: Zap, title: 'Smooth motion', text: 'Framer Motion & GSAP — interactions that feel premium.' },
+            { Icon: Code2, title: 'Clean code', text: 'Maintainable, accessible, component-driven React.' },
+            { Icon: Layers, title: 'No-Code expert', text: 'Webflow & Framer sites built for editors, not engineers.' },
+            { Icon: Globe, title: 'Fully responsive', text: 'Pixel-precise from 320px to 4K, tested everywhere.' },
+            { Icon: Sparkles, title: 'Conversion-aware', text: 'Hero, CTAs, structure tuned to actually convert.' },
+          ].map(({ Icon, title, text }) => (
+            <Bento key={title} className="md:col-span-2 p-6">
+              <div className="w-11 h-11 rounded-xl bg-primary/15 border border-primary/30 flex items-center justify-center mb-4">
+                <Icon className="w-5 h-5 text-primary" />
               </div>
-            ))}
-          </div>
+              <h4 className="font-display text-lg font-semibold text-foreground mb-1.5">{title}</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">{text}</p>
+            </Bento>
+          ))}
         </div>
       </div>
     </section>
