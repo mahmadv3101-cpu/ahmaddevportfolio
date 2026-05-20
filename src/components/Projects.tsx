@@ -1,6 +1,7 @@
-import { ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useRef, MouseEvent } from 'react';
 
 import elitewearHero from '@/assets/projects/elitewear-hero.jpeg';
 import vikingzHero from '@/assets/projects/vikingz-hero.jpeg';
@@ -11,177 +12,192 @@ import netflixHero from '@/assets/projects/netflix-hero.png';
 
 const projects = [
   {
-    id: 'elitewear',
-    title: 'EliteWear E-Commerce',
-    description: 'Premium footwear and accessories platform with modern UI and seamless shopping experience.',
-    image: elitewearHero,
-    tech: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap'],
-  },
-  {
-    id: 'vikingz',
-    title: 'Vikingz Luxury Watches',
-    description: 'Elegant e-commerce website with sophisticated dark theme for premium watches.',
-    image: vikingzHero,
-    tech: ['HTML5', 'CSS3', 'JavaScript', 'Responsive'],
+    id: 'golf-forecaster',
+    title: 'Golf Forecaster',
+    category: 'Webflow · SaaS',
+    description: 'Futuristic dark-themed landing page for an AI golf-analysis SaaS — built entirely in Webflow.',
+    image: golfHero,
+    tech: ['Webflow', 'Interactions', 'SaaS'],
+    featured: true,
   },
   {
     id: 'laxura',
-    title: 'Laxura Palace Hotel',
-    description: 'Luxury hotel booking website with elegant design and premium hospitality features.',
+    title: 'Laxura Palace',
+    category: 'Hospitality · Web',
+    description: 'Luxury hotel booking experience with cinematic visuals and refined typography.',
     image: laxuraHero,
-    tech: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap'],
+    tech: ['HTML', 'CSS', 'Bootstrap'],
+    featured: true,
+  },
+  {
+    id: 'elitewear',
+    title: 'EliteWear',
+    category: 'E-Commerce',
+    description: 'Premium footwear & accessories storefront with clean product flow.',
+    image: elitewearHero,
+    tech: ['HTML', 'CSS', 'JS'],
+  },
+  {
+    id: 'vikingz',
+    title: 'Vikingz Watches',
+    category: 'Luxury · E-Commerce',
+    description: 'Sophisticated dark e-commerce concept for a premium watch brand.',
+    image: vikingzHero,
+    tech: ['HTML', 'CSS', 'JS'],
   },
   {
     id: 'learnify',
-    title: 'Learnify Education',
-    description: 'Online education platform with courses, instructors, and modern learning experience.',
+    title: 'Learnify',
+    category: 'EdTech · React',
+    description: 'Online learning platform with course catalog, instructors and stats.',
     image: learnifyHero,
-    tech: ['HTML5', 'CSS3', 'JavaScript', 'React'],
-  },
-  {
-    id: 'golf-forecaster',
-    title: 'Golf Webflow SaaS Landing Page',
-    description: 'A futuristic golf analysis SaaS landing page with real-time shot breakdown, audio feedback, and modern dark UI.',
-    image: golfHero,
-    tech: ['Webflow', 'CSS3', 'JavaScript', 'SaaS'],
+    tech: ['React', 'CSS', 'JS'],
   },
   {
     id: 'netflix-clone',
     title: 'Netflix Clone',
-    description: 'A pixel-perfect Netflix homepage clone built with pure HTML & CSS, replicating the streaming giant\'s iconic dark UI and layout.',
+    category: 'UI Clone',
+    description: 'Pixel-perfect Netflix landing rebuilt with pure HTML & CSS.',
     image: netflixHero,
-    tech: ['HTML5', 'CSS3'],
+    tech: ['HTML', 'CSS'],
   },
 ];
 
-const LaptopFrame = ({ image, title, isHovered }: { image: string; title: string; isHovered: boolean }) => {
+const ProjectCard = ({
+  project,
+  large,
+}: {
+  project: (typeof projects)[number];
+  large?: boolean;
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const onMove = (e: MouseEvent<HTMLDivElement>) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    el.style.setProperty('--rx', `${-y * 4}deg`);
+    el.style.setProperty('--ry', `${x * 4}deg`);
+  };
+  const reset = () => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.setProperty('--rx', '0deg');
+    el.style.setProperty('--ry', '0deg');
+  };
+
   return (
-    <div className="relative mx-auto w-full max-w-[500px]">
-      {/* Laptop Screen */}
-      <div className="relative bg-gradient-to-b from-zinc-700 via-zinc-800 to-zinc-900 rounded-t-xl p-2 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.8)]">
-        {/* Camera */}
-        <div className="absolute top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-zinc-600 rounded-full" />
-        
-        {/* Screen Bezel */}
-        <div className="relative bg-black rounded-lg overflow-hidden mt-2">
-          {/* Screen */}
-          <div className="relative overflow-hidden aspect-video">
-            <img
-              src={image}
-              alt={title}
-              className={`w-full h-full object-cover object-top transition-transform duration-500 ${isHovered ? 'scale-[1.02]' : 'scale-100'}`}
-            />
-            {/* subtle reflection */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none" />
+    <Link to={`/project/${project.id}`} className="group block">
+      <div
+        ref={ref}
+        onMouseMove={onMove}
+        onMouseLeave={reset}
+        className="bento p-3 md:p-4 h-full"
+        style={{
+          transform: 'perspective(1200px) rotateX(var(--rx,0)) rotateY(var(--ry,0))',
+          transition: 'transform 400ms cubic-bezier(0.22,1,0.36,1)',
+        }}
+      >
+        <div className={`relative overflow-hidden rounded-[calc(var(--radius)-6px)] ${large ? 'aspect-[16/10]' : 'aspect-[16/11]'}`}>
+          <img
+            src={project.image}
+            alt={project.title}
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover object-top scale-100 group-hover:scale-105 transition-transform duration-700"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent" />
+
+          {/* Hover CTA */}
+          <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-background/70 backdrop-blur border border-border flex items-center justify-center text-foreground translate-x-2 -translate-y-2 opacity-0 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+            <ArrowUpRight size={18} />
+          </div>
+
+          <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center gap-2">
+            <span className="text-[10px] uppercase tracking-[0.2em] text-primary bg-primary/15 border border-primary/30 px-2.5 py-1 rounded-full backdrop-blur">
+              {project.category}
+            </span>
+          </div>
+        </div>
+
+        <div className="p-4 md:p-5 flex items-start justify-between gap-6">
+          <div>
+            <h3 className="font-display text-xl md:text-2xl font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
+              {project.title}
+            </h3>
+            <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2 max-w-md">
+              {project.description}
+            </p>
+            <div className="flex flex-wrap gap-1.5 mt-3">
+              {project.tech.map((t) => (
+                <span key={t} className="text-[11px] px-2 py-0.5 rounded-full border border-border/70 text-muted-foreground">
+                  {t}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-      
-      {/* Laptop Base/Keyboard */}
-      <div className="relative">
-        {/* Hinge */}
-        <div className="h-2 bg-gradient-to-b from-zinc-800 to-zinc-700 rounded-b-sm" />
-        
-        {/* Base */}
-        <div className="h-3 bg-gradient-to-b from-zinc-600 via-zinc-700 to-zinc-800 rounded-b-xl mx-[-2%]" />
-        
-        {/* Bottom edge */}
-        <div className="h-1 bg-zinc-900 rounded-b-xl mx-[-1%] mt-[-1px]" />
-      </div>
-
-      {/* Glow Effect */}
-      <div className={`absolute -inset-6 bg-primary/25 rounded-2xl blur-2xl transition-opacity duration-500 -z-10 ${isHovered ? 'opacity-100' : 'opacity-0'}`} />
-    </div>
-  );
-};
-
-const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const isEven = index % 2 === 0;
-  
-  return (
-    <div className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
-      {/* Laptop Frame */}
-      <div 
-        className={`${!isEven ? 'lg:order-2' : ''} flex justify-center`}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        <Link to={`/project/${project.id}`} className="block group w-full">
-          <LaptopFrame image={project.image} title={project.title} isHovered={isHovered} />
-        </Link>
-      </div>
-
-      {/* Content */}
-      <div className={`${!isEven ? 'lg:order-1' : ''}`}>
-        <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-4">
-          Featured Project
-        </p>
-        <Link to={`/project/${project.id}`}>
-          <h3 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4 hover:text-primary transition-colors">
-            {project.title}
-          </h3>
-        </Link>
-        <p className="text-muted-foreground leading-relaxed mb-6">
-          {project.description}
-        </p>
-
-        {/* Tech Stack */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          {project.tech.map((tech) => (
-            <span
-              key={tech}
-              className="text-xs font-medium px-3 py-1 rounded-full bg-secondary border border-border text-muted-foreground"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-
-        {/* Action Links */}
-        <div className="flex items-center gap-5">
-          <Link
-            to={`/project/${project.id}`}
-            className="flex items-center gap-2 btn-gradient text-sm"
-          >
-            View Project
-            <ArrowRight size={16} />
-          </Link>
-        </div>
-      </div>
-    </div>
+    </Link>
   );
 };
 
 const Projects = () => {
+  const featured = projects.filter((p) => p.featured);
+  const rest = projects.filter((p) => !p.featured);
+
   return (
-    <section id="projects" className="py-24 md:py-32 relative">
-      {/* Background Glow */}
-      <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
-      
+    <section id="projects" className="relative py-28 md:py-36 noise">
+      <div className="absolute top-0 left-1/3 w-[40rem] h-[40rem] bg-primary/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-[30rem] h-[30rem] bg-accent/10 rounded-full blur-3xl" />
+
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-20">
-          <div className="divider" />
-          <h2 className="section-heading text-foreground mb-4">
-            Featured Projects
-          </h2>
-          <p className="section-subheading mx-auto">
-            Showcasing real-world applications I've built with passion and precision
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14"
+        >
+          <div className="max-w-2xl">
+            <div className="eyebrow mb-5">03 — Selected work</div>
+            <h2 className="section-heading text-foreground">
+              Recent <span className="gradient-text italic font-medium">case studies</span>.
+            </h2>
+          </div>
+          <p className="text-muted-foreground max-w-md md:text-right">
+            A snapshot of websites I've designed and shipped across SaaS, hospitality, fashion and education.
           </p>
+        </motion.div>
+
+        {/* Featured row */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+          {featured.map((p, i) => (
+            <motion.div
+              key={p.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+            >
+              <ProjectCard project={p} large />
+            </motion.div>
+          ))}
         </div>
 
-        {/* Projects List */}
-        <div className="space-y-24 max-w-5xl mx-auto">
-          {projects.map((project, index) => (
-            <div
-              key={project.id}
-              className="animate-fade-in-up"
-              style={{ animationDelay: `${index * 0.15}s` }}
+        {/* Remaining grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {rest.map((p, i) => (
+            <motion.div
+              key={p.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
             >
-              <ProjectCard project={project} index={index} />
-            </div>
+              <ProjectCard project={p} />
+            </motion.div>
           ))}
         </div>
       </div>

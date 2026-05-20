@@ -1,15 +1,12 @@
 import { useState } from 'react';
-import { Send, Mail, MapPin, Phone, Github, Linkedin } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Send, Mail, Phone, Linkedin, Github, ArrowUpRight } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import Bento from './Bento';
 
 const Contact = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -19,194 +16,128 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Message sent successfully!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
-    
+    await new Promise((r) => setTimeout(r, 800));
+    toast({ title: 'Message sent', description: "Thanks — I'll get back to you within 24h." });
     setFormData({ name: '', email: '', subject: '', message: '' });
     setIsSubmitting(false);
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 relative bg-card/50">
-      {/* Background Glow */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-y-1/2" />
-      
+    <section id="contact" className="relative py-28 md:py-36 noise">
+      <div className="absolute top-1/2 left-0 w-[30rem] h-[30rem] bg-primary/15 rounded-full blur-3xl -translate-y-1/2" />
+
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="divider" />
-          <h2 className="section-heading text-foreground mb-4">
-            Get In Touch
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mb-14"
+        >
+          <div className="eyebrow mb-5">04 — Contact</div>
+          <h2 className="section-heading text-foreground mb-6">
+            Have a project in mind?<br />
+            <span className="gradient-text italic font-medium">Let's build it.</span>
           </h2>
-          <p className="section-subheading mx-auto">
-            Have a project in mind? Let's work together to bring your ideas to life.
+          <p className="section-subheading">
+            Available for freelance, contracts and long-term collaborations. I usually reply within a few hours.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 max-w-6xl mx-auto">
-          {/* Contact Info */}
-          <div className="lg:col-span-2">
-            <h3 className="text-2xl font-display font-semibold text-foreground mb-6">
-              Let's <span className="gradient-text">Connect</span>
-            </h3>
-            <p className="text-muted-foreground mb-10 leading-relaxed">
-              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out!
-            </p>
-
-            {/* Contact Details */}
-            <div className="space-y-6 mb-10">
-              <a href="mailto:mahmadv3101@gmail.com" className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
-                  <Mail className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <div className="text-sm text-muted-foreground">Email</div>
-                  <span className="text-foreground group-hover:text-primary transition-colors font-medium">
-                    mahmadv3101@gmail.com
-                  </span>
-                </div>
-              </a>
-
-              <a href="tel:+923415765097" className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
-                  <Phone className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <div className="text-sm text-muted-foreground">Phone</div>
-                  <span className="text-foreground group-hover:text-primary transition-colors font-medium">
-                    +92 341 5765097
-                  </span>
-                </div>
-              </a>
-
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <div className="text-sm text-muted-foreground">Location</div>
-                  <span className="text-foreground font-medium">Pakistan</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Social Links */}
-            <div>
-              <div className="text-sm text-muted-foreground mb-4 font-medium">Follow Me</div>
-              <div className="flex gap-3">
-                <a
-                  href="https://github.com/mahmadv3101-cpu"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-11 h-11 rounded-lg border border-border bg-card flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary hover:bg-primary/10 transition-all duration-300"
-                  aria-label="GitHub"
-                >
-                  <Github size={18} />
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-5 max-w-6xl mx-auto">
+          {/* Info bento */}
+          <div className="lg:col-span-2 flex flex-col gap-5">
+            <Bento className="p-7">
+              <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-5">Direct channels</div>
+              <div className="space-y-5">
+                <a href="mailto:mahmadv3101@gmail.com" className="flex items-center gap-4 group">
+                  <div className="w-11 h-11 rounded-xl bg-primary/15 border border-primary/30 flex items-center justify-center text-primary">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-muted-foreground">Email</div>
+                    <div className="text-foreground font-medium group-hover:text-primary transition-colors">mahmadv3101@gmail.com</div>
+                  </div>
+                </a>
+                <a href="tel:+923415765097" className="flex items-center gap-4 group">
+                  <div className="w-11 h-11 rounded-xl bg-primary/15 border border-primary/30 flex items-center justify-center text-primary">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-muted-foreground">Phone</div>
+                    <div className="text-foreground font-medium group-hover:text-primary transition-colors">+92 341 5765097</div>
+                  </div>
                 </a>
                 <a
                   href="https://www.linkedin.com/in/muhammad-ahmad-a8a682397"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-11 h-11 rounded-lg border border-border bg-card flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary hover:bg-primary/10 transition-all duration-300"
-                  aria-label="LinkedIn"
+                  className="flex items-center gap-4 group"
                 >
-                  <Linkedin size={18} />
+                  <div className="w-11 h-11 rounded-xl bg-primary/15 border border-primary/30 flex items-center justify-center text-primary">
+                    <Linkedin className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-muted-foreground">LinkedIn</div>
+                    <div className="text-foreground font-medium group-hover:text-primary transition-colors">muhammad-ahmad</div>
+                  </div>
                 </a>
               </div>
-            </div>
+            </Bento>
+
+            <Bento className="p-7 flex items-center justify-between gap-4">
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-75 animate-ping" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+                  </span>
+                  <span className="text-xs uppercase tracking-[0.18em] text-primary">Status</span>
+                </div>
+                <div className="font-display text-lg font-semibold text-foreground">Open to new projects</div>
+                <div className="text-sm text-muted-foreground">Booking June 2026 →</div>
+              </div>
+              <a
+                href="https://github.com/mahmadv3101-cpu"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="w-11 h-11 rounded-full border border-border flex items-center justify-center hover:text-primary hover:border-primary transition-colors"
+              >
+                <Github size={18} />
+              </a>
+            </Bento>
           </div>
 
-          {/* Contact Form */}
-          <div className="lg:col-span-3">
-            <div className="pro-card">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                      Your Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="input-field"
-                      placeholder="John Doe"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                      Your Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="input-field"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                </div>
-
+          {/* Form bento */}
+          <Bento className="lg:col-span-3 p-8 md:p-10">
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className="input-field"
-                    placeholder="Project Inquiry"
-                  />
+                  <label htmlFor="name" className="block text-xs uppercase tracking-[0.18em] text-muted-foreground mb-2">Name</label>
+                  <input type="text" id="name" name="name" required value={formData.name} onChange={handleChange} className="input-field" placeholder="Your name" />
                 </div>
-
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={5}
-                    className="input-field resize-none"
-                    placeholder="Tell me about your project..."
-                  />
+                  <label htmlFor="email" className="block text-xs uppercase tracking-[0.18em] text-muted-foreground mb-2">Email</label>
+                  <input type="email" id="email" name="email" required value={formData.email} onChange={handleChange} className="input-field" placeholder="you@brand.com" />
                 </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full btn-gradient flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? (
-                    'Sending...'
-                  ) : (
-                    <>
-                      Send Message
-                      <Send size={16} />
-                    </>
-                  )}
-                </button>
-              </form>
-            </div>
-          </div>
+              </div>
+              <div>
+                <label htmlFor="subject" className="block text-xs uppercase tracking-[0.18em] text-muted-foreground mb-2">Subject</label>
+                <input type="text" id="subject" name="subject" required value={formData.subject} onChange={handleChange} className="input-field" placeholder="Webflow landing for…" />
+              </div>
+              <div>
+                <label htmlFor="message" className="block text-xs uppercase tracking-[0.18em] text-muted-foreground mb-2">Project brief</label>
+                <textarea id="message" name="message" required rows={5} value={formData.message} onChange={handleChange} className="input-field resize-none" placeholder="Tell me about goals, timeline, and budget range…" />
+              </div>
+              <button type="submit" disabled={isSubmitting} className="btn-gradient w-full sm:w-auto disabled:opacity-60">
+                {isSubmitting ? 'Sending…' : (<>Send message <Send size={16} /></>)}
+              </button>
+              <p className="text-xs text-muted-foreground flex items-center gap-1.5 pt-2">
+                Prefer email? <a href="mailto:mahmadv3101@gmail.com" className="text-primary inline-flex items-center gap-0.5 hover:underline">mahmadv3101@gmail.com <ArrowUpRight size={12} /></a>
+              </p>
+            </form>
+          </Bento>
         </div>
       </div>
     </section>
