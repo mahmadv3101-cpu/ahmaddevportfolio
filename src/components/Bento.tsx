@@ -1,10 +1,10 @@
-import { useRef, MouseEvent, ReactNode } from 'react';
+import { useRef, MouseEvent, ReactNode, ElementType } from 'react';
 import { cn } from '@/lib/utils';
 
 interface BentoProps {
   children: ReactNode;
   className?: string;
-  as?: 'div' | 'article' | 'section';
+  as?: ElementType;
 }
 
 const Bento = ({ children, className, as: Tag = 'div' }: BentoProps) => {
@@ -19,7 +19,6 @@ const Bento = ({ children, className, as: Tag = 'div' }: BentoProps) => {
   };
 
   return (
-    // @ts-expect-error dynamic tag
     <Tag ref={ref} onMouseMove={onMove} className={cn('bento', className)}>
       {children}
     </Tag>
